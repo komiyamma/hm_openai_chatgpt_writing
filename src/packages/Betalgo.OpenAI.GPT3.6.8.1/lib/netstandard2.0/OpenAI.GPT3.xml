@@ -1,0 +1,1236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenAI.GPT3</name>
+    </assembly>
+    <members>
+        <member name="T:OpenAI.GPT3.Extensions.StringExtensions">
+            <summary>
+                Extension methods for string manipulation
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Extensions.StringExtensions.RemoveIfStartWith(System.String,System.String)">
+            <summary>
+                Remove the search string from the beginning of string if it exists
+            </summary>
+            <param name="text"></param>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IAudioService">
+            <summary>
+                Learn how to turn audio into text.
+                Related guide: <a href="https://platform.openai.com/docs/guides/speech-to-text">Speech to text</a>
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IAudioService.CreateTranscription(OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest,System.Threading.CancellationToken)">
+            <summary>
+                Transcribes audio into the input language.
+            </summary>
+            <param name="audioCreateTranscriptionRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IAudioService.CreateTranslation(OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest,System.Threading.CancellationToken)">
+            <summary>
+                Translates audio into into English.
+            </summary>
+            <param name="audioCreateTranscriptionRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IChatCompletionService">
+            <summary>
+                Given a chat conversation, the model will return a chat completion response.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IChatCompletionService.CreateCompletion(OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates a completion for the chat message
+            </summary>
+            <param name="modelId">ID of the model to use. Currently, only gpt-3.5-turbo and gpt-3.5-turbo-0301 are supported.</param>
+            <param name="chatCompletionCreate"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IChatCompletionService.CreateCompletionAsStream(OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new completion for the provided prompt and parameters and returns a stream of CompletionCreateRequests
+            </summary>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="chatCompletionCreate"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IChatCompletionServiceExtension.Create(OpenAI.GPT3.Interfaces.IChatCompletionService,OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest,OpenAI.GPT3.ObjectModels.Models.Model,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new completion for the provided prompt and parameters
+            </summary>
+            <param name="service"></param>
+            <param name="chatCompletionCreate"></param>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.ICompletionService">
+            <summary>
+                Given a prompt, the model will return one or more predicted completions, and can also return the probabilities of
+                alternative tokens at each position.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.ICompletionService.CreateCompletion(OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new completion for the provided prompt and parameters
+            </summary>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="createCompletionModel"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.ICompletionService.CreateCompletionAsStream(OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new completion for the provided prompt and parameters and returns a stream of CompletionCreateRequests
+            </summary>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="createCompletionModel"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.ICompletionServiceExtension.Create(OpenAI.GPT3.Interfaces.ICompletionService,OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest,OpenAI.GPT3.ObjectModels.Models.Model,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new completion for the provided prompt and parameters
+            </summary>
+            <param name="service"></param>
+            <param name="createCompletionModel"></param>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IEditService">
+            <summary>
+                Given a prompt and an instruction, the model will return an edited version of the prompt.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IEditService.CreateEdit(OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new edit for the provided input, instruction, and parameters
+            </summary>
+            <param name="editCreate"></param>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IEditServiceExtension.Edit(OpenAI.GPT3.Interfaces.IEditService,OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest,OpenAI.GPT3.ObjectModels.Models.Model,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new edit for the provided input, instruction, and parameters
+            </summary>
+            <param name="service"></param>
+            <param name="editCreate"></param>
+            <param name="modelId">The ID of the model to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IEmbeddingService">
+            <summary>
+                Creates an embedding vector representing the input text.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IEmbeddingService.CreateEmbedding(OpenAI.GPT3.ObjectModels.RequestModels.EmbeddingCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates a new embedding for the provided input and parameters.
+            </summary>
+            <param name="createEmbeddingModel"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileService.ListFile(System.Threading.CancellationToken)">
+            <summary>
+                Returns a list of files that belong to the user's organization.
+            </summary>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileService.UploadFile(System.String,System.Byte[],System.String,System.Threading.CancellationToken)">
+            <summary>
+                Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all
+                the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage
+                limit.
+            </summary>
+            <param name="file">
+                Name of the <a href="https://jsonlines.readthedocs.io/en/latest/"> JSON Lines </a> file to be uploaded.
+                If the purpose is set to "fine-tune", each line is a JSON record with "prompt" and "completion" fields representing
+                your <a href="https://platform.openai.com/docs/guides/fine-tuning/prepare-training-data">training examples</a>.
+            </param>
+            <param name="fileName">Name of file</param>
+            <param name="purpose">
+                The intended purpose of the uploaded documents.
+                Use "fine-tune" for <a href="https://platform.openai.com/docs/api-reference/fine-tunes">Fine-tuning</a>. This
+                allows us
+                to validate the format of the uploaded file.
+            </param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileService.DeleteFile(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Delete a file.
+            </summary>
+            <param name="fileId">The ID of the file to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileService.RetrieveFile(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Returns information about a specific file.
+            </summary>
+            <param name="fileId">The ID of the file to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileService.RetrieveFileContent``1(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Returns the contents of the specified file
+            </summary>
+            <param name="fileId">The ID of the file to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFileServiceExtension.RetrieveFileContent(OpenAI.GPT3.Interfaces.IFileService,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Returns the contents of the specified file
+            </summary>
+            <param name="service"></param>
+            <param name="fileId">The ID of the file to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IFineTuneService">
+            <summary>
+                Manage fine-tuning jobs to tailor a model to your specific training data.
+                Related guide: <a href="https://platform.openai.com/docs/guides/fine-tuning">Fine-tune models</a>
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFineTuneService.CreateFineTune(OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates a job that fine-tunes a specified model from a given dataset.
+                Response includes details of the enqueued job including job status and the name of the fine-tuned models once
+                complete.
+            </summary>
+            <param name="createFineTuneRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFineTuneService.ListFineTunes(System.Threading.CancellationToken)">
+            <summary>
+                List your organization's fine-tuning jobs
+            </summary>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFineTuneService.RetrieveFineTune(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Gets info about the fine-tune job.
+            </summary>
+            <param name="fineTuneId">The ID of the fine-tune job</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFineTuneService.CancelFineTune(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Immediately cancel a fine-tune job.
+            </summary>
+            <param name="fineTuneId">The ID of the fine-tune job to cancel</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IFineTuneService.ListFineTuneEvents(System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <summary>
+                Get fine-grained status updates for a fine-tune job.
+            </summary>
+            <param name="fineTuneId">The ID of the fine-tune job to get events for.</param>
+            <param name="stream">
+                Whether to stream events for the fine-tune job. If set to true, events will be sent as data-only server-sent events
+                as they become available. The stream will terminate with a data: [DONE] message when the job is finished
+                (succeeded, cancelled, or failed).
+                If set to false, only events generated so far will be returned.
+            </param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IImageService">
+            <summary>
+                Given a prompt and/or an input image, the model will generate a new image.
+                Related guide: <a href="https://platform.openai.com/docs/guides/images">Image generation</a>
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IImageService.CreateImage(OpenAI.GPT3.ObjectModels.RequestModels.ImageCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates an image given a prompt.
+            </summary>
+            <param name="imageCreate"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IImageService.CreateImageEdit(OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates an edited or extended image given an original image and a prompt.
+            </summary>
+            <param name="imageEditCreateRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IImageService.CreateImageVariation(OpenAI.GPT3.ObjectModels.RequestModels.ImageVariationCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates a variation of a given image.
+            </summary>
+            <param name="imageEditCreateRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IImageServiceExtension.CreateImage(OpenAI.GPT3.Interfaces.IImageService,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Creates an image given a prompt.
+            </summary>
+            <param name="service"></param>
+            <param name="prompt"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IModelService">
+            <summary>
+                List and describe the various models available in the API. You can refer to the
+                <a href="https://platform.openai.com/docs/models">Models</a> documentation to understand what models are available
+                and
+                the differences between them.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IModelService.ListModel(System.Threading.CancellationToken)">
+            <summary>
+                Lists the currently available models, and provides basic information about each one such as the owner and
+                availability.
+            </summary>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IModelService.RetrieveModel(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+            </summary>
+            <param name="model">The ID of the model to use for this request</param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="T:OpenAI.GPT3.Interfaces.IModerationService">
+            <summary>
+                Given a input text, outputs if the model classifies it as violating OpenAI's content policy.
+                Related guide: <a href="https://platform.openai.com/docs/guides/moderation">Moderations</a>
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IModerationService.CreateModeration(OpenAI.GPT3.ObjectModels.RequestModels.CreateModerationRequest,System.Threading.CancellationToken)">
+            <summary>
+                Classifies if text violates OpenAI's Content Policy
+            </summary>
+            <param name="createModerationRequest"></param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IModerationServiceExtension.CreateModeration(OpenAI.GPT3.Interfaces.IModerationService,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Classifies if text violates OpenAI's Content Policy
+            </summary>
+            <param name="service"></param>
+            <param name="input">The input text to classify</param>
+            <param name="model">
+                Two content moderations models are available: text-moderation-stable and text-moderation-latest.
+                The default is text-moderation-latest which will be automatically upgraded over time. This ensures you are always
+                using our most accurate model. If you use text-moderation-stable, we will provide advanced notice before updating
+                the model. Accuracy of text-moderation-stable may be slightly lower than for text-moderation-latest.
+            </param>
+            <param name="cancellationToken">Propagates notification that operations should be canceled.</param>
+            <returns></returns>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Models">
+            <summary>
+                List and describe the various models available in the API. You can refer to the
+                <a href="https://platform.openai.com/docs/models">Models</a> documentation to understand what models are available
+                and
+                the differences between them.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Completions">
+            <summary>
+                Given a prompt, the model will return one or more predicted completions, and can also return the probabilities of
+                alternative tokens at each position.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Embeddings">
+            <summary>
+                Creates an embedding vector representing the input text.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Files">
+            <summary>
+                Files are used to upload documents that can be used across features like <see cref="P:OpenAI.GPT3.Interfaces.IOpenAIService.FineTunes" />
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Image">
+            <summary>
+                Given a prompt and/or an input image, the model will generate a new image.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Edit">
+            <summary>
+                Creates a new edit for the provided input, instruction, and parameters
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.ChatCompletion">
+            <summary>
+                Given a chat conversation, the model will return a chat completion response.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.Interfaces.IOpenAIService.Audio">
+            <summary>
+                Given an audio file, the model will return a transcription of the audio.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Interfaces.IOpenAIService.SetDefaultModelId(System.String)">
+            <summary>
+                Set default model
+            </summary>
+            <param name="modelId"></param>
+        </member>
+        <member name="T:OpenAI.GPT3.Managers.OpenAIService">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateTranscription(OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateTranslation(OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateCompletion(OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateCompletionAsStream(OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateCompletion(OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateCompletionAsStream(OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.ListFile(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.UploadFile(System.String,System.Byte[],System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.DeleteFile(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.RetrieveFile(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.RetrieveFileContent``1(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateImage(OpenAI.GPT3.ObjectModels.RequestModels.ImageCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates an image given a prompt.
+            </summary>
+            <param name="imageCreateModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateImageEdit(OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates an edited or extended image given an original image and a prompt.
+            </summary>
+            <param name="imageEditCreateRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateImageVariation(OpenAI.GPT3.ObjectModels.RequestModels.ImageVariationCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+                Creates a variation of a given image.
+            </summary>
+            <param name="imageEditCreateRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.CreateModeration(OpenAI.GPT3.ObjectModels.RequestModels.CreateModerationRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Models">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Completions">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Embeddings">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Files">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.FineTunes">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Moderation">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Image">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Edit">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.ChatCompletion">
+            <inheritdoc />
+        </member>
+        <member name="P:OpenAI.GPT3.Managers.OpenAIService.Audio">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.SetDefaultModelId(System.String)">
+            <summary>
+                Sets default Model Id
+            </summary>
+            <param name="modelId"></param>
+        </member>
+        <member name="M:OpenAI.GPT3.Managers.OpenAIService.GetDefaultModelId">
+            <summary>
+                Get default Model Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.Gpt4">
+            <summary>
+                More capable than any GPT-3.5 model, able to do more complex tasks, and optimized for chat. Will be updated with
+                our latest model iteration.
+                8,192 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.Gpt_4_0314">
+            <summary>
+                Snapshot of gpt-4 from March 14th 2023. Unlike gpt-4, this model will not receive updates, and will only be
+                supported for a three month period ending on June 14th 2023.
+                8,192 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.Gpt_4_32k">
+            <summary>
+                Same capabilities as the base gpt-4 mode but with 4x the context length. Will be updated with our latest model
+                iteration.
+                32,768 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.Gpt_4_32k_0314">
+            <summary>
+                Snapshot of gpt-4-32 from March 14th 2023. Unlike gpt-4-32k, this model will not receive updates, and will only be
+                supported for a three month period ending on June 14th 2023.
+                32,768 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo">
+            <summary>
+                Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our
+                latest model iteration.
+                4,096 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.Models.ChatGpt3_5Turbo0301">
+            <summary>
+                Snapshot of gpt-3.5-turbo from March 1st 2023. Unlike gpt-3.5-turbo, this model will not receive updates, and will
+                only be supported for a three month period ending on June 1st 2023.
+                4,096 tokens	Up to Sep 2021
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.ObjectModels.Models.ModelNameBuilder(OpenAI.GPT3.ObjectModels.Models.BaseModel,System.Nullable{OpenAI.GPT3.ObjectModels.Models.Subject},System.String)">
+            <summary>
+                This method does not guarantee returned model exists.
+            </summary>
+            <param name="subject"></param>
+            <param name="version"></param>
+            <param name="baseModel"></param>
+            <returns></returns>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.Prompt">
+            <summary>
+                An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio
+                language.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.ResponseFormat">
+            <summary>
+                The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.Language">
+            <summary>
+                The language of the input audio. Supplying the input language in
+                <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO-639-1</a> format will improve accuracy and
+                latency.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.File">
+            <summary>
+                The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.FileName">
+            <summary>
+                FileName
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.Model">
+            <summary>
+                ID of the model to use. Only whisper-1 is currently available.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.AudioCreateTranscriptionRequest.Temperature">
+            <summary>
+                The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower
+                values like 0.2 will make it more focused and deterministic. If set to 0, the model will use log probability to
+                automatically increase the temperature until certain thresholds are hit.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.Messages">
+            <summary>
+                The messages to generate chat completions for, in the chat format.
+                The main input is the messages parameter. Messages must be an array of message objects, where each object has a
+                role (either “system”, “user”, or “assistant”) and content (the content of the message). Conversations can be as
+                short as 1 message or fill many pages.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.TopP">
+            <summary>
+                An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the
+                tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are
+                considered.
+                We generally recommend altering this or temperature but not both.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.N">
+            <summary>
+                How many chat completion choices to generate for each input message.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.Stream">
+            <summary>
+                If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only server-sent events
+                as they become available, with the stream terminated by a data: [DONE] message.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.Stop">
+            <summary>
+                Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop
+                sequence.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.StopAsList">
+            <summary>
+                Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop
+                sequence.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.MaxTokens">
+            <summary>
+                The maximum number of tokens allowed for the generated answer. By default, the number of tokens the model can
+                return will be (4096 - prompt tokens).
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.PresencePenalty">
+            <summary>
+                Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far,
+                increasing the model's likelihood to talk about new topics.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/docs/api-reference/parameter-details" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.FrequencyPenalty">
+            <summary>
+                Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so
+                far, decreasing the model's likelihood to repeat the same line verbatim.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/docs/api-reference/parameter-details" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.LogitBias">
+            <summary>
+                Modify the likelihood of specified tokens appearing in the completion.
+                Accepts a json object that maps tokens(specified by their token ID in the GPT tokenizer) to an associated bias
+                value from -100 to 100. You can use this tokenizer tool (which works for both GPT-2 and GPT-3) to convert text to
+                token IDs. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact
+                effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values
+                like -100 or 100 should result in a ban or exclusive selection of the relevant token.
+                As an example, you can pass { "50256": -100}
+                to prevent the endoftext token from being generated.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/tokenizer?view=bpe" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.Model">
+            <summary>
+                ID of the model to use. Currently, only gpt-3.5-turbo and gpt-3.5-turbo-0301 are supported.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.Temperature">
+            <summary>
+                What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while
+                lower values like 0.2 will make it more focused and deterministic.
+                We generally recommend altering this or top_p but not both.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatCompletionCreateRequest.User">
+            <summary>
+                A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. Learn more.
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage">
+            <summary>
+                Messages must be an array of message objects, where each object has a role (either “system”, “user”, or
+                “assistant”) and content (the content of the message)
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.Role">
+            <summary>
+                “system”, “user”, or “assistant”
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ChatMessage.Content">
+            <summary>
+                Message Content
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest">
+            <summary>
+                Create Completion Request Model
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Prompt">
+            <summary>
+                The prompt(s) to generate completions for, encoded as a string, a list of strings, or a list of token lists.
+                Note that endoftext is the document separator that the model sees during training, so if a prompt is not specified
+                the model will generate as if from the beginning of a new document.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-prompt" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.PromptAsList">
+            <summary>
+                The prompt(s) to generate completions for, encoded as a string, a list of strings, or a list of token lists.
+                Note that endoftext is the document separator that the model sees during training, so if a prompt is not specified
+                the model will generate as if from the beginning of a new document.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-prompt" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Suffix">
+            <summary>
+                The suffix that comes after a completion of inserted text.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.MaxTokens">
+            <summary>
+                The maximum number of <a href="https://platform.openai.com/tokenizer">tokens</a> to generate in the completion.
+                The token count of your prompt plus max_tokens cannot exceed the model's context length. Most models have a context
+                length of 2048 tokens (except davinci-codex, which supports 4096).
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.TopP">
+            <summary>
+                An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the
+                tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are
+                considered.
+                We generally recommend altering this or temperature but not both.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.N">
+            <summary>
+                Defaults to 1
+                How many completions to generate for each prompt.
+                Note: Because this parameter generates many completions, it can quickly consume your token quota.Use carefully and
+                ensure that you have reasonable settings for max_tokens and stop.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Stream">
+            <summary>
+                Whether to stream back partial progress. If set, tokens will be sent as data-only
+                <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format">
+                    server-sent events
+                </a>
+                as they become available, with the stream terminated by a data: [DONE] message.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Echo">
+            <summary>
+                Echo back the prompt in addition to the completion
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Stop">
+            <summary>
+                Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop
+                sequence.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.StopAsList">
+            <summary>
+                Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop
+                sequence.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.PresencePenalty">
+            <summary>
+                Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far,
+                increasing the model's likelihood to talk about new topics.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/docs/api-reference/parameter-details" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.FrequencyPenalty">
+            <summary>
+                Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so
+                far, decreasing the model's likelihood to repeat the same line verbatim.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/docs/api-reference/parameter-details" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.BestOf">
+            <summary>
+                Generates best_of completions server-side and returns the "best" (the one with the lowest log probability per
+                token). Results cannot be streamed.
+                When used with n, best_of controls the number of candidate completions and n specifies how many to return – best_of
+                must be greater than n.
+                Note: Because this parameter generates many completions, it can quickly consume your token quota.Use carefully and
+                ensure that you have reasonable settings for max_tokens and stop.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.LogitBias">
+            <summary>
+                Modify the likelihood of specified tokens appearing in the completion.
+                Accepts a json object that maps tokens(specified by their token ID in the GPT tokenizer) to an associated bias
+                value from -100 to 100. You can use this tokenizer tool (which works for both GPT-2 and GPT-3) to convert text to
+                token IDs. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact
+                effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values
+                like -100 or 100 should result in a ban or exclusive selection of the relevant token.
+                As an example, you can pass { "50256": -100}
+                to prevent the endoftext token from being generated.
+            </summary>
+            <seealso cref="!:https://platform.openai.com/tokenizer?view=bpe" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.LogProbs">
+            <summary>
+                Include the log probabilities on the logprobs most likely tokens, as well the chosen tokens. For example, if
+                logprobs is 5, the API will return a list of the 5 most likely tokens. The API will always return the logprob of
+                the sampled token, so there may be up to logprobs+1 elements in the response.
+                The maximum value for logprobs is 5. If you need more than this, please contact support@openai.com and describe
+                your use case.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.Temperature">
+            <summary>
+                What
+                <a href="https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277">sampling temperature</a>
+                to use. Higher values means the model will take more risks. Try 0.9 for more creative
+                applications, and 0 (argmax sampling) for ones with a well-defined answer.
+                We generally recommend altering this or top_p but not both.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CompletionCreateRequest.User">
+            <summary>
+                A unique identifier representing your end-user, which will help OpenAI to monitor and detect abuse.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CreateModerationRequest.InputAsList">
+            <summary>
+                The input text to classify
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CreateModerationRequest.Input">
+            <summary>
+                The input text to classify
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.CreateModerationRequest.Model">
+            <summary>
+                Two content moderations models are available: text-moderation-stable and text-moderation-latest.
+                The default is text-moderation-latest which will be automatically upgraded over time. This ensures you are always
+                using our most accurate model. If you use text-moderation-stable, we will provide advanced notice before updating
+                the model. Accuracy of text-moderation-stable may be slightly lower than for text-moderation-latest.
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest">
+            <summary>
+                Create Edit Request Model
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest.Input">
+            <summary>
+                The input text to use as a starting point for the edit.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest.Instruction">
+            <summary>
+                The instruction that tells the model how to edit the prompt.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest.N">
+            <summary>
+                Defaults to 1
+                How many completions to generate for each prompt.
+                Note: Because this parameter generates many completions, it can quickly consume your token quota.Use carefully and
+                ensure that you have reasonable settings for max_tokens and stop.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest.TopP">
+            <summary>
+                An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the
+                tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are
+                considered.
+                We generally recommend altering this or temperature but not both.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EditCreateRequest.Temperature">
+            <summary>
+                What
+                <a href="https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277">sampling temperature</a>
+                to use. Higher values means the model will take more risks. Try 0.9 for more creative
+                applications, and 0 (argmax sampling) for ones with a well-defined answer.
+                We generally recommend altering this or top_p but not both.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EmbeddingCreateRequest.InputAsList">
+            <summary>
+                Input text to get embeddings for, encoded as a string or array of tokens. To get embeddings for multiple inputs
+                in a single request, pass an array of strings or array of token arrays. Each input must not exceed 2048 tokens in
+                length.
+                Unless your are embedding code, we suggest replacing newlines (`\n`) in your input with a single space, as we have
+                observed inferior results when newlines are present.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/embeddings/create#embeddings/create-input" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EmbeddingCreateRequest.Input">
+            <summary>
+                Input text to get embeddings for, encoded as a string or array of tokens. To get embeddings for multiple inputs
+                in a single request, pass an array of strings or array of token arrays. Each input must not exceed 2048 tokens in
+                length.
+                Unless your are embedding code, we suggest replacing newlines (`\n`) in your input with a single space, as we have
+                observed inferior results when newlines are present.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/embeddings/create#embeddings/create-input" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.EmbeddingCreateRequest.Model">
+            <summary>
+                ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your
+                available models, or see our [Model overview](/docs/models/overview) for descriptions of them.
+            </summary>
+            <see cref="!:https://platform.openai.com/docs/api-reference/embeddings/create#embeddings/create-model" />
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.TrainingFile">
+            <summary>
+                The ID of an uploaded file that contains training data.
+                See <a href="https://platform.openai.com/docs/api-reference/files/upload">upload file</a> for how to upload a file.
+                Your dataset must be formatted as a JSONL file, where each training example is a JSON object with the keys "prompt"
+                and "completion". Additionally, you must upload your file with the purpose fine-tune.
+                See the <a href="https://platform.openai.com/docs/guides/fine-tuning/creating-training-data">fine-tuning</a> guide
+                for
+                more details.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.ValidationFile">
+            <summary>
+                The ID of an uploaded file that contains validation data.
+                If you provide this file, the data is used to generate validation metrics periodically during fine-tuning. These
+                metrics can be viewed in the
+                <a href="https://platform.openai.com/docs/guides/fine-tuning/analyzing-your-fine-tuned-model">
+                    fine-tuning results
+                    file
+                </a>
+                . Your train and validation data should be mutually exclusive.
+                Your dataset must be formatted as a JSONL file, where each validation example is a JSON object with the keys
+                "prompt" and "completion". Additionally, you must upload your file with the purpose fine-tune.
+                See the <a href="https://platform.openai.com/docs/guides/fine-tuning/creating-training-data">fine-tuning guide</a>
+                for
+                more details.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.NEpochs">
+            <summary>
+                The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.BatchSize">
+            <summary>
+                The batch size to use for training. The batch size is the number of training examples used to train a single
+                forward and backward pass.
+                By default, the batch size will be dynamically configured to be ~0.2% of the number of examples in the training
+                set, capped at 256 - in general, we've found that larger batch sizes tend to work better for larger datasets.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.LearningRateMultiplier">
+            <summary>
+                The learning rate multiplier to use for training. The fine-tuning learning rate is the original learning rate used
+                for pretraining multiplied by this value.
+                By default, the learning rate multiplier is the 0.05, 0.1, or 0.2 depending on final batch_size(larger learning
+                rates tend to perform better with larger batch sizes). We recommend experimenting with values in the range 0.02 to
+                0.2 to see what produces the best results.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.PromptLossWeight">
+            <summary>
+                The weight to use for loss on the prompt tokens. This controls how much the model tries to learn to generate the
+                prompt (as compared to the completion which always has a weight of 1.0), and can add a stabilizing effect to
+                training when completions are short.
+                If prompts are extremely long (relative to completions), it may make sense to reduce this weight so as to avoid
+                over-prioritizing learning the prompt.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.ComputeClassificationMetrics">
+            <summary>
+                If set, we calculate classification-specific metrics such as accuracy and F-1 score using the validation set at the
+                end of every epoch.These metrics can be viewed in the
+                <a href="https://platform.openai.com/docs/guides/fine-tuning/analyzing-your-fine-tuned-model">results file</a>.
+                In order to compute classification metrics, you must provide a validation_file.Additionally, you must specify
+                classification_n_classes for multiclass classification or classification_positive_class for binary classification.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.ClassificationNClasses">
+            <summary>
+                The number of classes in a classification task.
+                This parameter is required for multiclass classification.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.ClassificationPositiveClass">
+            <summary>
+                The positive class in binary classification.
+                This parameter is needed to generate precision, recall, and F1 metrics when doing binary classification.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.ClassificationBetas">
+            <summary>
+                If this is provided, we calculate F-beta scores at the specified beta values. The F-beta score is a generalization
+                of F-1 score. This is only used for binary classification.
+                With a beta of 1 (i.e.the F-1 score), precision and recall are given the same weight.A larger beta score puts more
+                weight on recall and less on precision. A smaller beta score puts more weight on precision and less on recall.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.Suffix">
+            <summary>
+                A string of up to 40 characters that will be added to your fine-tuned model name.
+                For example, a suffix of "custom-model-name" would produce a model name like
+                ada:ft-your-org:custom-model-name-2022-02-15-04-21-04.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.FineTuneCreateRequest.Model">
+            <summary>
+                The name of the base model to fine-tune. You can select one of "ada", "babbage", or "curie". To learn more about
+                these models, see the <a href="https://platform.openai.com/docs/models">Models</a> documentation.
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ObjectModels.RequestModels.ImageCreateRequest">
+            <summary>
+                Image Create Request Model
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageCreateRequest.Prompt">
+            <summary>
+                A text description of the desired image(s). The maximum length is 1000 characters.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest.Image">
+            <summary>
+                The image to edit. Must be a valid PNG file, less than 4MB, and square.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest.ImageName">
+            <summary>
+                Image file name
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest.Mask">
+            <summary>
+                An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited.
+                Must be a valid PNG file, less than 4MB, and have the same dimensions as image.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageEditCreateRequest.MaskName">
+            <summary>
+                Mask file name
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageVariationCreateRequest.Image">
+            <summary>
+                The image to edit. Must be a valid PNG file, less than 4MB, and square.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.RequestModels.ImageVariationCreateRequest.ImageName">
+            <summary>
+                Image file name
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ObjectModels.ResponseModels.FileResponseModels.FileContentResponse`1">
+            <summary>
+                File content response
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.ResponseModels.FileResponseModels.FileContentResponse`1.Content">
+            <summary>
+                Content of your file
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.ResponseModels.FileResponseModels.FileContentResponse`1.Successful">
+            <summary>
+                return false if there is an error
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.ResponseModels.FileResponseModels.FileContentResponse`1.Error">
+            <summary>
+                Error
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.SharedModels.SharedImageRequestBaseModel.N">
+            <summary>
+                The number of images to generate. Must be between 1 and 10.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.SharedModels.SharedImageRequestBaseModel.Size">
+            <summary>
+                The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.SharedModels.SharedImageRequestBaseModel.ResponseFormat">
+            <summary>
+                The format in which the generated images are returned. Must be one of url or b64_json
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.ObjectModels.SharedModels.SharedImageRequestBaseModel.User">
+            <summary>
+                A unique identifier representing your end-user, which will help OpenAI to monitor and detect abuse.
+                <a href="https://platform.openai.com/docs/usage-policies/end-user-ids">Learn more</a>.
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.ProviderType">
+            <summary>
+                Provider Type
+            </summary>
+        </member>
+        <member name="F:OpenAI.GPT3.ProviderType.OpenAi">
+            <summary>
+                OpenAi Provider
+            </summary>
+        </member>
+        <member name="F:OpenAI.GPT3.ProviderType.Azure">
+            <summary>
+                Azure Provider
+            </summary>
+        </member>
+        <member name="F:OpenAI.GPT3.OpenAiOptions.SettingKey">
+            <summary>
+                Setting key for Json Setting Bindings
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.ProviderType">
+            <summary>
+                Get Provider Type
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.Organization">
+            <summary>
+                For users who belong to multiple organizations, you can pass a header to specify which organization is used for an
+                API request. Usage from these API requests will count against the specified organization's subscription quota.
+                Organization IDs can be found on your
+                <a href="https://platform.openai.com/account/org-settings">Organization settings</a> page.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.ApiKey">
+            <summary>
+                The OpenAI API uses API keys for authentication. Visit your
+                <a href="https://platform.openai.com/account/api-keys">API Keys page</a> to retrieve the API key you'll use in
+                your requests.
+                Remember that your API key is a secret! Do not share it with others or expose it in any client-side code(browsers,
+                apps). Production requests must be routed through your own backend server where your API key can be securely loaded
+                from an environment variable or key management service.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.ApiVersion">
+            <summary>
+                Default Api Version
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.BaseDomain">
+            <summary>
+                Base Domain
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.DeploymentId">
+            <summary>
+                Azure Deployment Id
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.ResourceName">
+            <summary>
+                Azure Resource Name
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.DefaultEngineId">
+            <summary>
+                Default model id. If you are working with only one model, this will save you from few line extra code.
+            </summary>
+        </member>
+        <member name="P:OpenAI.GPT3.OpenAiOptions.DefaultModelId">
+            <summary>
+                Default model id. If you are working with only one model, this will save you from few line extra code.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.OpenAiOptions.CreateAzureSettings(System.String,System.String,System.String,System.String)">
+            <summary>
+                Create an instance of this class with the necessary information to connect to the azure open ai api
+            </summary>
+            <param name="resourceName">Resource Name of your Azure OpenAI resource</param>
+            <param name="deploymentId">The id of your deployment of OpenAI</param>
+            <param name="apiVersion">The azure open ai api version</param>
+            <param name="apiKey">Token used for authentication</param>
+            <returns>A valid OpenAiSettings instance configured with the method inputs</returns>
+        </member>
+        <member name="M:OpenAI.GPT3.OpenAiOptions.CreateAzureSettingsWithBaseDomain(System.String,System.String,System.String,System.String)">
+            <summary>
+                Create an instance of this class with the necessary information to connect to the azure open ai api
+            </summary>
+            <param name="deploymentId">The id of your deployment of OpenAI</param>
+            <param name="baseDomain">Base Domain of your Azure OpenAI service</param>
+            <param name="apiVersion">The azure open ai api version</param>
+            <param name="apiKey">Token used for authentication</param>
+            <returns>A valid OpenAiSettings instance configured with the method inputs</returns>
+        </member>
+        <member name="M:OpenAI.GPT3.OpenAiOptions.Validate">
+            <summary>
+                Validate Settings
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:OpenAI.GPT3.Tokenizer.GPT3.TokenizerGpt3Settings">
+            <summary>
+                GPT3 Settings.
+            </summary>
+        </member>
+        <member name="T:OpenAI.GPT3.Tokenizer.GPT3.TokenizerGpt3">
+            <summary>
+                GPT3 Tokenizer.
+            </summary>
+        </member>
+        <member name="M:OpenAI.GPT3.Tokenizer.GPT3.TokenizerGpt3.Encode(System.String,System.Boolean)">
+            <summary>
+                Encode This method use LF style EOL, if you use CR LF style EOL you need to set cleanUpWindowsEOL to true
+            </summary>
+            <param name="text"></param>
+            <param name="cleanUpCREOL">set it true to get rid of CR</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenAI.GPT3.Tokenizer.GPT3.TokenizerGpt3.TokenCount(System.String,System.Boolean)">
+            <summary>
+                Get token count. This method use LF style EOL, if you use CR LF style EOL you need to set cleanUpWindowsEOL to true
+            </summary>
+            <param name="text"></param>
+            <param name="cleanUpCREOL">set it true to get rid of CR</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

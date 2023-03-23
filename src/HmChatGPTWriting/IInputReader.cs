@@ -1,0 +1,4 @@
+﻿interface IInputReader
+{
+    string ReadText();
+}

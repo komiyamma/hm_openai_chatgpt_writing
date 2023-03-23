@@ -1,5 +1,5 @@
 ﻿/*--------------------------------------------
- * HmOpenAIChatWriting v1.0.5
+ * HmChatGPTWriting v1.0.5
  * 
  * Copyright (C) 2023 Akitsugu Komiyama
  * under the MIT License
@@ -15,6 +15,9 @@ SET_OPENAI_KEY:
     if ($OPENAI_KEY == "") {
         $OPENAI_KEY = ""; // 直接ここでAPIのKEYの文字列を指定しても良いですが、あまり推奨はしません。直書きする場合、このマクロを迂闊に配布して他者にAPIのキーが漏れないよう注意。
     }
+
+SET_MODEL:
+    $MODEL = "gpt-3.5-turbo"; // gpt-4 なども設定可能だが、値段が10倍以上に跳ね上がるので注意。
 
 // 選択テキストの保持 ($HmSelectedTextという変数名を変更しないこと)
 SAVE_SELECTED_TEXT:
@@ -75,7 +78,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)",
-               "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
+            "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
 
         // メニューの選択
         call SELECT_MENU;
@@ -89,8 +92,9 @@ SHOW_MENU_AND_SELECT:
 
     } else {
 
-        $ITEM_ARRAY[0] = "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)";
-        $EXPRESSION[0] = "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
+        call ADD_MENUITEM
+            "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)",
+            "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
 
         // メニューの選択
         call SELECT_MENU;
@@ -152,7 +156,7 @@ REPOSITION_CURSOR:
     // 先頭だということは、前の行一杯を選択している。
     if (selendcolumn == 0) {
         moveto2 selendcolumn, selendlineno-1;
-    // その他
+    // その他は行の途中まで選択している
     } else {
         moveto2 selendcolumn, selendlineno;
     }
@@ -175,7 +179,7 @@ SHOW_OPENAI_FORM:
     setcomdetachmethod #CHATGPT_OBJ, "DestroyForm";
 
     // フォームの表示。
-    #_ = member(#CHATGPT_OBJ, "CreateForm", $OPENAI_KEY);
+    #_ = member(#CHATGPT_OBJ, "CreateForm", $OPENAI_KEY, $MODEL);
 
     return;
 

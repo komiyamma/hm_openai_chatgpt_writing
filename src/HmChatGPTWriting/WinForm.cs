@@ -12,14 +12,16 @@ class AppForm : Form
     IInputReader input;
 
     HmChatGPTWriteSharedMemory sm;
+    string model = "";
 
-    public AppForm(string key, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
+    public AppForm(string key, string models, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
     {
         // 「入力」や「出力」の対象を外部から受け取り
         this.output = output;
         this.input = input;
 
         this.sm = sm;
+        this.model = models;
 
         try
         {
@@ -295,7 +297,7 @@ class AppForm : Form
     {
         try
         {
-            ai = new OpenAIChatMain(key, output);
+            ai = new OpenAIChatMain(key, model, output);
         }
         catch (Exception ex)
         {

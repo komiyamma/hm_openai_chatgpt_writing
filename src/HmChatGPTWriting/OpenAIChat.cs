@@ -29,11 +29,19 @@ class OpenAIChatMain
     static string? OpenAIKeyOverWriteVariable = null; // 直接APIの値を上書き指定している場合(マクロなどからの直接の引き渡し)
     const string ErrorMessageNoOpenAIKey = OpenAIKeyEnvironmentVariableName + "キーが環境変数にありません。:" + NewLine;
 
-    public OpenAIChatMain(string key, IOutputWriter output)
+    string model = "";
+
+    public OpenAIChatMain(string key, string model, IOutputWriter output)
     {
+        this.model = model;
+        if (String.IsNullOrEmpty(model))
+        {
+            this.model = Models.ChatGpt3_5Turbo;
+        }
+
         // 出力対象のDI用
         this.output = output;
-
+        
         // とりあえず代入。エラーならChatGPTの方が言ってくれる。
         if (key.Length > 0)
         {
@@ -104,7 +112,7 @@ class OpenAIChatMain
     }
 
     // チャットのエンジンやオプション。過去のチャット内容なども渡す。
-    static async Task<ChatCompletionCreateResponse> ReBuildPastChatContents(CancellationToken ct)
+    async Task<ChatCompletionCreateResponse> ReBuildPastChatContents(CancellationToken ct)
     {
         var key = GetOpenAIKey();
         if (key == null)
@@ -127,7 +135,7 @@ class OpenAIChatMain
         var options = new ChatCompletionCreateRequest
         {
             Messages = messageList,
-            Model = Models.ChatGpt3_5Turbo,
+            Model = this.model,
             MaxTokens = 2000
         };
 
@@ -171,10 +179,6 @@ class OpenAIChatMain
             {
                 answer_sum += str ?? "";
             }
-            else
-            {
-                answer_sum += "★だめだめぽ";
-            }
         }
         else
         {
@@ -184,7 +188,6 @@ class OpenAIChatMain
                 throw new Exception(ErrorMsgUnknown);
             }
 
-            answer_sum += "■だめだめぽ";
             output.WriteLine($"{completionResult.Error.Code}: {completionResult.Error.Message}");
         }
 

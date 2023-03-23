@@ -66,7 +66,7 @@ public class HmOutputWriter : IOutputWriter
             catch (Exception ex)
             {
                 string err = ex.Message + NewLine + ex.StackTrace;
-                WriteLine("★" + err);
+                WriteLine(err);
             }
         }
 

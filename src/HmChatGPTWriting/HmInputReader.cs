@@ -16,7 +16,7 @@ namespace HmOpenAIChatGptWriting
             if (String.IsNullOrEmpty(readBuffer))
             {
 
-                string? text = (String)Hm.Macro.Var["$HmSelectedText"];
+                string? text = (String)Hm.Macro.Var["$HmTargetAnalyzeText"];
                 if (String.IsNullOrEmpty(text))
                 {
                     return "";

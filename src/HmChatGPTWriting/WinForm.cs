@@ -99,8 +99,14 @@ class AppForm : Form
         {
             textBuffer = input.ReadText();
 
-            // このWritingでは会話履歴は無駄なのでためない
-            OpenAIChatMain.InitMessages();
+            if (textBuffer == "HmChatGPTWriting:ClearConversationChatGPT")
+            {
+                ClearChatHistory();
+
+                this.Close();
+
+                return;
+            }
 
             // 質問をためる
             PostQuestion();
@@ -259,13 +265,14 @@ class AppForm : Form
     }
 
     // 送信ボタンを押すと、質問内容をAIに登録、答えを得る処理へ
-    private void BtnChatClear_Click(object? sender, EventArgs e)
+    public void ClearChatHistory()
     {
         if (ai == null) { return; }
 
         try
         {
             OpenAIChatMain.InitMessages();
+            input.ClearReadBuffer();
             output.WriteLine("-- 会話履歴をクリア --");
         }
         catch (Exception ex)

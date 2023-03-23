@@ -33,7 +33,7 @@ public class HmOutputWriter : IOutputWriter
     {
         try
         {
-            var ret = Hm.Macro.Statement("insert", message_parameter + "\n\n");
+            var ret = Hm.Macro.Statement("insert", message_parameter);
         }
         catch (Exception ex)
         {

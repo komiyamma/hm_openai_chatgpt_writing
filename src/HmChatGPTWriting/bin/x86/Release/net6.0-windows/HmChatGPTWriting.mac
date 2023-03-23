@@ -52,8 +52,12 @@ SHOW_MENU_AND_SELECT:
             "以下の文章の全てを簡潔な文章に直して下さい。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
+            "(&Y)超要約案 ⇐ 選択中の文章全体",
+            "以下の文章全体を出来るだけ短い文章で要約してください。\n\n" + $HmSelectedText;
+
+        call ADD_MENUITEM
             "(&D)詳細文章案 ⇐ 選択中の文章",
-            "以下の文章の全てを詳細な文章に直して下さい。\n\n" + $HmSelectedText;
+            "以下の文章の全てを深い内容の詳細な文章に直して下さい。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&C)変更文章案 ⇐ 選択中の文章",
@@ -86,8 +90,10 @@ SHOW_MENU_AND_SELECT:
             endmacro;
         }
 
-        // 選択を解除して、カーソル位置を次の行に整える。
-        call REPOSITION_CURSOR;
+        // if (strstr($EXPRESSION[#selected_item], "HmChatGPTWriting:") < 0) {
+            // 選択を解除して、カーソル位置を次の行に整える。
+            call REPOSITION_CURSOR;
+        // }
 
     } else {
 

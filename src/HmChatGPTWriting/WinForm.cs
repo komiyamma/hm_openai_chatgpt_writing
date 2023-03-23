@@ -1,4 +1,8 @@
-﻿namespace HmOpenAIChatGptWriting;
+﻿using HmChatGPTWriting;
+using System.Reflection;
+using System.Resources;
+
+namespace HmOpenAIChatGptWriting;
 
 class AppForm : Form
 {
@@ -21,6 +25,7 @@ class AppForm : Form
         {
             SetForm();
             SetCancelButton();
+            SetPictureBox();
             SetOpenAI(key);
         }
         catch (Exception ex)
@@ -36,7 +41,8 @@ class AppForm : Form
         this.Text = "*-- HmChatGPTWriting --*";
         this.Width = 300;
         this.Height = 120;
-        this.Opacity = 0.7;
+        this.Opacity = 0.9;
+        this.MaximumSize = new Size(Width, Height) ;
         this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
     }
@@ -111,6 +117,27 @@ class AppForm : Form
         {
         }
     }
+
+    PictureBox pb = new PictureBox();
+
+    void SetPictureBox()
+    {
+
+        pb = new PictureBox()
+        {
+            Width = 33,
+            Height = 33,
+            Left = 100,
+            Top = 40
+        };
+
+        pb.Image = Resource.thinking;
+        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 5);
+
+        this.Controls.Add(pb);
+
+    }
+
 
 
     // 中断ボタン

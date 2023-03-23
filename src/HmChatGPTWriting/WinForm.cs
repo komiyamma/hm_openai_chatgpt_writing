@@ -41,10 +41,11 @@ class AppForm : Form
         this.Text = "*-- HmChatGPTWriting --*";
         this.Width = 300;
         this.Height = 120;
-        this.Opacity = 0.9;
+        this.Opacity = 0.8;
         this.MaximumSize = new Size(Width, Height) ;
         this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
+        this.Padding = new System.Windows.Forms.Padding(5);
     }
 
     private void AppForm_Shown(object? sender, EventArgs e)
@@ -138,7 +139,7 @@ class AppForm : Form
         };
 
         pb.Image = Resource.thinking;
-        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 6);
+        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 10);
 
         this.Controls.Add(pb);
 
@@ -155,13 +156,13 @@ class AppForm : Form
         {
             Text = "中断",
             UseVisualStyleBackColor = true,
-            Top = 3,
+            Top = 5,
             Left = 100,
             Width = 96,
             Height = 20
         };
 
-        btnCancel.Location = new Point((this.ClientSize.Width - btnCancel.Width) / 2, Top);
+        btnCancel.Location = new Point((this.ClientSize.Width - btnCancel.Width) / 2, btnCancel.Top);
         btnCancel.Enabled = false;
         btnCancel.Click += BtnCancel_Click;
         this.Controls.Add(btnCancel);

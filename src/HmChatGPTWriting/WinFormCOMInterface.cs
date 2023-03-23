@@ -29,11 +29,11 @@ public class HmChatGPTWriting
         }
 
         form.Show();
+        // フォームを前に持ってくるだけ
+        form.BringToFront();
 
         form.AskQuestionToGpt();
         
-        // フォームを前に持ってくるだけ
-        // form.BringToFront();
         return 1;
     }
 

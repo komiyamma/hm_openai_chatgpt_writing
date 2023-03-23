@@ -165,10 +165,15 @@ class OpenAIChatMain
         if (completionResult.Successful)
         {
             // ちろっと文字列追加表示
+            // string? str = completionResult.Choices.First().Message.Content;
             string? str = completionResult.Choices.First().Message.Content;
             if (str != null)
             {
                 answer_sum += str ?? "";
+            }
+            else
+            {
+                answer_sum += "★だめだめぽ";
             }
         }
         else
@@ -179,6 +184,7 @@ class OpenAIChatMain
                 throw new Exception(ErrorMsgUnknown);
             }
 
+            answer_sum += "■だめだめぽ";
             output.WriteLine($"{completionResult.Error.Code}: {completionResult.Error.Message}");
         }
 

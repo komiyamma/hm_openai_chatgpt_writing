@@ -25,6 +25,15 @@ SAVE_SELECTED_TEXT:
         insertreturn;
     }
 
+    if ($HmSelectedText == "") {
+        endmacro;
+    }
+
+
+SAVE_EXPRESSION_TEXT:
+        $HmEvalExpressionText = @"
+            insert R""HIDEMARUEXPRESSIONTEXT({0})HIDEMARUEXPRESSIONTEXT"";
+        ";
 
 // 他の秀丸プロセスでHmOpenAIGPTWritingが使われているかどうか
 CHECK_OPENAI_USED_HIDEMARUHANDLE:

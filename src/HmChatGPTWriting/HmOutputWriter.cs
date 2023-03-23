@@ -31,7 +31,14 @@ public class HmOutputWriter : IOutputWriter
 
     public static IntPtr ReMacroScopeMethod(string message_parameter)
     {
-        var ret = Hm.Macro.Statement("insert", message_parameter);
+        try
+        {
+            var ret = Hm.Macro.Statement("insert", message_parameter);
+        }
+        catch (Exception ex)
+        {
+        }
+
         return (IntPtr)1;
     }
 
@@ -59,7 +66,7 @@ public class HmOutputWriter : IOutputWriter
             catch (Exception ex)
             {
                 string err = ex.Message + NewLine + ex.StackTrace;
-                WriteLine(err);
+                WriteLine("★" + err);
             }
         }
 

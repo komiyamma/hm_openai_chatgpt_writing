@@ -42,8 +42,11 @@ class AppForm : Form
 
     private void AppForm_Shown(object? sender, EventArgs e)
     {
-        try { 
-            sm.CreateSharedMemory();
+        try {
+            if (sm != null)
+            {
+                sm.CreateSharedMemory();
+            }
         } catch(Exception )
         {
 
@@ -54,9 +57,12 @@ class AppForm : Form
     {
         try
         {
-            sm.DeleteSharedMemory();
+            if (sm != null)
+            {
+                sm.DeleteSharedMemory();
+            }
         }
-        catch(Exception ex)
+        catch(Exception)
         {
 
         }

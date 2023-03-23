@@ -56,6 +56,10 @@ SHOW_MENU_AND_SELECT:
             "以下の文章全体を出来るだけ短い文章で要約してください。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
+            "(&W)ツイート長 ⇐ 選択中の文章",
+            "以下の文章をツイッターのツイートに収まる100文字以上140文字未満の文章に要約してください。\n\n" + $HmSelectedText;
+
+        call ADD_MENUITEM
             "(&D)詳細文章案 ⇐ 選択中の文章",
             "以下の文章の全てを深い内容の詳細な文章に直して下さい。\n\n" + $HmSelectedText;
 
@@ -68,12 +72,20 @@ SHOW_MENU_AND_SELECT:
             "";
 
         call ADD_MENUITEM
-            "(&S)類似表現 ⇐ 選択中の単語",
+            "(&K)根拠やデータ ⇐ 選択中の文章",
+            "以下の文章の根拠やデータを提示してください、必要に応じてアスキーアートを使って下さい。\n\n" + $HmSelectedText;
+
+        call ADD_MENUITEM
+            "\x01",
+            "";
+
+        call ADD_MENUITEM
+            "(&R)類似表現 ⇐ 選択中の単語",
             "以下の単語の類似表現を９個提案してください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&M)誤字脱字 ⇐ 選択中の文章",
-            "以下の文章の全てに対して誤字脱字や、不適切な表現をチェックしてください。\n\n" + $HmSelectedText;
+            "以下の文章の全てに対して誤字脱字や、タイプミス、不適切な表現をチェックしてください。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",

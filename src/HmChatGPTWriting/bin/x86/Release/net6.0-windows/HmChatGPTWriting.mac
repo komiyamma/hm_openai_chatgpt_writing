@@ -21,6 +21,8 @@ SAVE_SELECTED_TEXT:
 
     if (selecting) {
         $HmSelectedText = gettext2( seltopcolumn, seltoplineno, selendcolumn, selendlineno );
+        golineend;
+        insertreturn;
     }
 
 

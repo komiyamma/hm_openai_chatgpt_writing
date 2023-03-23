@@ -35,8 +35,10 @@ public class HmOutputWriter : IOutputWriter
         return (IntPtr)1;
     }
 
-    public void FlushMessage(string msg)
+    public void FlushMessage()
     {
+        string msg = messageBuffer;
+
         // マクロ実行中ならそのまま実行できる(基本的にはこれはほぼない。偶然ユーザーが実行したマクロとタイミングが衝突した等)
         if (Hm.Macro.IsExecuting)
         {

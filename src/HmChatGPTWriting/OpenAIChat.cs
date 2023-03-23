@@ -185,9 +185,10 @@ class OpenAIChatMain
         // 今回の返答ををChatGPTの返答として記録しておく
         messageList.Add(ChatMessage.FromAssistant(answer_sum));
 
-        output.WriteLine(answer_sum);
+        output.AddMessageBuffer(answer_sum);
+
         // 解答が完了したよ～というのを人にわかるように表示
-        output.FlushMessage(answer_sum);
+        output.WriteLine(AssistanceAnswerCompleteMsg);
     }
 
     // 質問内容はそのまま履歴に追加する

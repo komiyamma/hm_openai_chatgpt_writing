@@ -6,7 +6,7 @@ interface IOutputWriter
 
     void AddMessageBuffer(string msg);
 
-    void FlushMessage(string msg);
+    void FlushMessage();
 
     string Normalize(string? msg);
 

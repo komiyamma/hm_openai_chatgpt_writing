@@ -7,11 +7,15 @@ class AppForm : Form
     IOutputWriter output;
     IInputReader input;
 
-    public AppForm(string key, IOutputWriter output, IInputReader input)
+    HmChatGPTWriteSharedMemory sm;
+
+    public AppForm(string key, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
     {
         // 「入力」や「出力」の対象を外部から受け取り
         this.output = output;
         this.input = input;
+
+        this.sm = sm;
 
         try
         {
@@ -33,11 +37,31 @@ class AppForm : Form
         this.Text = "*-- HmChatGPTWriting --*";
         this.Width = 500;
         this.Height = 210;
+        this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
+    }
+
+    private void AppForm_Shown(object? sender, EventArgs e)
+    {
+        try { 
+            sm.CreateSharedMemory();
+        } catch(Exception )
+        {
+
+        }
     }
 
     private void AppForm_FormClosing(object? sender, FormClosingEventArgs e)
     {
+        try
+        {
+            sm.DeleteSharedMemory();
+        }
+        catch(Exception ex)
+        {
+
+        }
+
         if (ai == null)
         {
             return;
@@ -191,6 +215,9 @@ class AppForm : Form
                 btnOk.Enabled = true;
             }
         }
+        output.FlushMessage();
+
+        this.Close();
 
     }
 

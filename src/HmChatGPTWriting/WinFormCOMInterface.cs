@@ -25,9 +25,7 @@ public class HmChatGPTWriting
         {
             output = new HmOutputWriter();
             input = new HmInputReader();
-            form = new AppForm(key, output, input);
-
-            sm.CreateSharedMemory();
+            form = new AppForm(key, output, input, sm);
         }
 
         form.Show();

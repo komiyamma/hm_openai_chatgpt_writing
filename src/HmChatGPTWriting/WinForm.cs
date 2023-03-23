@@ -20,7 +20,6 @@ class AppForm : Form
         try
         {
             SetForm();
-            SetOkButton();
             SetCancelButton();
             SetOpenAI(key);
         }
@@ -81,30 +80,31 @@ class AppForm : Form
     string textBuffer = "";
     public void AskQuestionToGpt()
     {
-        textBuffer = input.ReadText();
-        // テキストがアップデートされたらすぐに送る。
-        BtnOk_Click(null, new EventArgs());
-    }
+        if (ai == null) { return; }
 
-
-    // 送信ボタン
-    private Button? btnOk;
-    void SetOkButton()
-    {
-        btnOk = new Button()
+        try
         {
-            Text = "送信 (Ctrl+⏎)",
-            UseVisualStyleBackColor = true,
-            Top = 2,
-            Left = 2,
-            Width = 96,
-            Height = 20
-        };
+            textBuffer = input.ReadText();
 
-        btnOk.Click += BtnOk_Click;
-        this.Controls.Add(btnOk);
+            // このWritingでは会話履歴は無駄なのでためない
+            OpenAIChatMain.InitMessages();
 
+            // 質問をためる
+            PostQuestion();
+
+            // 答えを得る
+            _ = GetAnswer();
+        }
+        catch (Exception ex)
+        {
+            string err = ex.Message + NewLine + ex.StackTrace;
+            output.WriteLine(err);
+        }
+        finally
+        {
+        }
     }
+
 
     // 中断ボタン
     private Button? btnCancel;
@@ -210,10 +210,6 @@ class AppForm : Form
             {
                 btnCancel.Enabled = false;
             }
-            if (btnOk != null)
-            {
-                btnOk.Enabled = true;
-            }
         }
         output.FlushMessage();
 
@@ -224,29 +220,6 @@ class AppForm : Form
     // 送信ボタンを押すと、質問内容をAIに登録、答えを得る処理へ
     private void BtnOk_Click(object? sender, EventArgs e)
     {
-        if (ai == null) { return; }
-
-        try
-        {
-            if (btnOk != null) { btnOk.Enabled = false; }
-
-            // このWritingでは会話履歴は無駄なのでためない
-            OpenAIChatMain.InitMessages();
-
-            // 質問をためる
-            PostQuestion();
-
-            // 答えを得る
-            _ = GetAnswer();
-        }
-        catch (Exception ex)
-        {
-            string err = ex.Message + NewLine + ex.StackTrace;
-            output.WriteLine(err);
-        }
-        finally
-        {
-        }
     }
 
     // 送信ボタンを押すと、質問内容をAIに登録、答えを得る処理へ

@@ -56,9 +56,10 @@ public class HmOutputWriter : IOutputWriter
                 // message_parametr に入れる文字列の用途は好きにしてよい。分岐判別用途に使ったり、伝達パラメータに使ってもよい。
                 var ret = Hm.Macro.Exec.Method(msg, method);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                WriteLine(e + NewLine);
+                string err = ex.Message + NewLine + ex.StackTrace;
+                WriteLine(err);
             }
         }
 

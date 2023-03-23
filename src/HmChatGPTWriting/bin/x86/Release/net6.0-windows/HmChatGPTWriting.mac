@@ -26,14 +26,10 @@ SAVE_SELECTED_TEXT:
     }
 
     if ($HmSelectedText == "") {
+        call OUTPUTPANE_WRITELINE "選択対象がありません";
         endmacro;
     }
 
-
-SAVE_EXPRESSION_TEXT:
-        $HmEvalExpressionText = @"
-            insert R""HIDEMARUEXPRESSIONTEXT({0})HIDEMARUEXPRESSIONTEXT"";
-        ";
 
 // 他の秀丸プロセスでHmOpenAIGPTWritingが使われているかどうか
 CHECK_OPENAI_USED_HIDEMARUHANDLE:
@@ -93,5 +89,15 @@ SHOW_OPENAI_FORM:
 
     // フォームの表示。
     #_ = member(#CHATGPT_OBJ, "CreateForm", $OPENAI_KEY);
+
+    return;
+
+
+// アウトプット枠への表示
+OUTPUTPANE_WRITELINE:
+    $$msg = $$1;
+
+    #OUTPUTPANE = loaddll("HmOutputPane.dll");
+    #ret=dllfunc(#OUTPUTPANE, "Output", hidemaruhandle(0), $$msg + "\r\n");
 
     return;

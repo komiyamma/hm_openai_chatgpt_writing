@@ -10,8 +10,8 @@ namespace HmOpenAIChatGptWriting;
 public class HmChatGPTWriting
 {
     private static AppForm? form;
-    private static HmOutputWriter? output;
-    private static HmInputReader? input;
+    private static IOutputWriter? output;
+    private static IInputReader? input;
 
     HmChatGPTWriteSharedMemory sm = new HmChatGPTWriteSharedMemory();
 
@@ -111,3 +111,4 @@ public class HmChatGPTWriteSharedMemory
         return GetSharedMemory();
     }
 }
+

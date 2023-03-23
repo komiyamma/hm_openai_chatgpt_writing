@@ -11,7 +11,7 @@ public class HmOutputWriter : IOutputWriter
 
     public HmOutputWriter() { }
 
-    static string messageBuffer = "";
+    string messageBuffer = "";
     public void ClearMessageBuffer()
     {
         messageBuffer = "";

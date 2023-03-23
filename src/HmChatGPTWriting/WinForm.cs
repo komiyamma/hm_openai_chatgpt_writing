@@ -34,8 +34,9 @@ class AppForm : Form
     void SetForm()
     {
         this.Text = "*-- HmChatGPTWriting --*";
-        this.Width = 500;
-        this.Height = 210;
+        this.Width = 300;
+        this.Height = 120;
+        this.Opacity = 0.7;
         this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
     }
@@ -218,6 +219,8 @@ class AppForm : Form
             }
         }
         output.FlushMessage();
+
+        input.ClearReadBuffer();
 
         this.Close();
 

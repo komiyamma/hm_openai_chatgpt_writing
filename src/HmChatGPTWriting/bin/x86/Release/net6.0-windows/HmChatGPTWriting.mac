@@ -31,7 +31,7 @@ SHOW_MENU_AND_SELECT:
     if (selecting) {
         call ADD_MENUITEM
             "タイトル考案 ⇐ 選択中の複数の単語", 
-            "以下のキーワードを基にタイトルを日本語で9案考えてください\n\n" + $HmSelectedText;
+            "以下のキーワードを基にタイトルを９個提案してください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "記事構成案 ⇐ 選択中の単語群もしくはタイトル",
@@ -55,7 +55,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "変更文章案 ⇐ 選択中の文章",
-            "以下の文章を文章構成を大きく変更して書き換えてください。3つ提示してください。\n\n" + $HmSelectedText;
+            "以下の文章を文章構成を大きく変更して書き換えてください。３つ提示してください。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -63,7 +63,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "類似表現 ⇐ 選択中の単語",
-            "以下の単語の類似表現を9案考えてください\n\n" + $HmSelectedText;
+            "以下の単語の類似表現を９個提案してください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "誤字脱字 ⇐ 選択中の文章",

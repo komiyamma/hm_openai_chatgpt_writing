@@ -23,53 +23,137 @@ SAVE_SELECTED_TEXT:
         $HmSelectedText = gettext2( seltopcolumn, seltoplineno, selendcolumn, selendlineno, 1 );
     }
 
+    if ($HmSelectedText == "") {
+        call OUTPUTPANE_WRITELINE "選択対象がありません";
+    }
 
-// 他の秀丸プロセスでHmOpenAIGPT35Turboが使われているかどうか
-CHECK_OPENAI_USED_HIDEMARUHANDLE:
+SHOW_MENU_AND_SELECT:
+    if (selecting) {
+        call ADD_MENUITEM
+            "タイトル考案 ⇐ 選択中の複数の単語", 
+            "以下のキーワードを基にタイトルを10案考えてください\n\n" + $HmSelectedText;
 
-    // HmOpenAIGPT35Turbo のウィンドウが無い
-    if (! findwindow("*-- HmChatGPT35Turbo --*")) {
+        call ADD_MENUITEM
+            "記事構成案 ⇐ 選択中の単語群もしくはタイトル",
+            "以下のキーワードを基に記事構成案を考えてください\n\n" + $HmSelectedText;
 
-        // 普段通りの処理を実行
-        call SHOW_OPENAI_FORM;
+        call ADD_MENUITEM
+            "\x01",
+            "";
 
-    // HmOpenAIGPT35Turbo のウィンドウが既にある
-    } else {
+        call ADD_MENUITEM
+            "構成内容の下書き ⇐ 選択中の構成ツリー",
+            "以下の構成内容から下書きの文章を考えてください\n\n" + $HmSelectedText;
 
-        #JUDGE_OBJ = createobject( currentmacrodirectory + @"\HmChatGPTWriting.comhost.dll", "{044C142D-059B-4A6D-BBAC-9B3F276EE030}");
+        call ADD_MENUITEM
+            "簡潔文章へ ⇐ 選択中の文章",
+            "以下の文章の全てを簡潔な文章に直して下さい。\n\n" + $HmSelectedText;
 
-        #OpeningFormHidemaruHandle = member(#JUDGE_OBJ, "GetFormHideamruHandle");
+        call ADD_MENUITEM
+            "詳細文章へ ⇐ 選択中の文章",
+            "以下の文章の全てを詳細な文章に直して下さい。\n\n" + $HmSelectedText;
 
-        // HmOpenAIGPT35Turboを使っている有効な秀丸ハンドルがある
-        if (#OpeningFormHidemaruHandle > 0 ) {
+        call ADD_MENUITEM
+            "\x01",
+            "";
 
-            #CurrentHidemaruHandle = hidemaruhandle(0);
+        call ADD_MENUITEM
+            "類似表現 ⇐ 選択中の単語",
+            "以下の単語の類似表現を10案考えてください\n\n" + $HmSelectedText;
 
-            // 一旦対象のウィンドウをアクティブにして...
-            if (#CurrentHidemaruHandle != #OpeningFormHidemaruHandle) {
-                setactivehidemaru #OpeningFormHidemaruHandle;
-            }
+        call ADD_MENUITEM
+            "誤字脱字 ⇐ 選択中の文章",
+            "以下の文章の全てに対して誤字脱字や、不適切な表現をチェックしてください。\n\n" + $HmSelectedText;
 
-            call SHOW_OPENAI_FORM;
+        call ADD_MENUITEM
+            "\x01",
+            "";
 
-            // 元のウィンドウに戻す。
-            if (#CurrentHidemaruHandle != #OpeningFormHidemaruHandle) {
-                setactivehidemaru #CurrentHidemaruHandle;
-            }
+        call ADD_MENUITEM
+            "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)",
+               "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
 
-        } else {
-
-            // 普段通りの処理を実行
-            call SHOW_OPENAI_FORM;
-
+        // メニューの選択
+        call SELECT_MENU;
+        #selected_item = ##return;
+        if (#selected_item <= 0) {
+            endmacro;
         }
 
+        // 選択を解除して、カーソル位置を次の行に整える。
+        call REPOSITION_CURSOR;
+
+    } else {
+
+        $ITEM_ARRAY[0] = "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)";
+        $EXPRESSION[0] = "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
+
+        // メニューの選択
+        call SELECT_MENU;
+        #selected_item = ##return;
+        if (#selected_item <= 0) {
+            endmacro;
+        }
     }
+
+
+// AIに分析してもらう文字列
+SETTING_ANALYSISTEXT:
+    $HmTargetAnalyzeText = $EXPRESSION[#selected_item-1]; // この$HmTargetAnalyzeTextという変数名は固定なので変更しないこと。
+
+
+// 他の秀丸プロセスでHmOpenAIGPTWritingが使われているかどうか
+CHECK_OPENAI_USED_HIDEMARUHANDLE:
+
+    // HmOpenAIGPTWriting のウィンドウを表示中
+    if (findwindow("*-- HmChatGPTWriting --*")) {
+
+        // ChatGPTにリクエスト中ですが、上書きで問い合わせします。
+        call OUTPUTPANE_WRITELINE "ChatGPTにリクエスト中ですが、問い合わせを上書きします。";
+
+    }
+
+    call SHOW_OPENAI_FORM;
 
     endmacro;
 
 
-// フォームの表示
+// メニューに項目を足し込んでいく
+ADD_MENUITEM:
+    $ITEM_ARRAY[#MENUITEM_IX] = $$1;
+    $EXPRESSION[#MENUITEM_IX] = $$2;
+
+    #MENUITEM_IX = #MENUITEM_IX + 1;
+
+    return;
+
+
+// メニューを表示し、選択番号を返す。
+SELECT_MENU:
+
+    #ITEM_CNT = 0;
+    while(true) {
+        if ($ITEM_ARRAY[#ITEM_CNT] == "") {
+            break;
+        }
+        #ITEM_CNT = #ITEM_CNT + 1;
+    }
+    menuarray $ITEM_ARRAY, #ITEM_CNT;
+
+    return result;
+
+
+// 選択を解除し、カーソル位置を整える。
+REPOSITION_CURSOR:
+    moveto2 selendcolumn, selendlineno;
+    escape;
+    golineend;
+    insertreturn;
+    insertreturn;
+    return;
+
+
+// ChatGPTのThinkingフォームの表示
 SHOW_OPENAI_FORM:
 
     #CHATGPT_OBJ = createobject( currentmacrodirectory + @"\HmChatGPTWriting.comhost.dll", "{0D346374-D9DF-4095-A237-05ECD19A9E42}");
@@ -82,5 +166,15 @@ SHOW_OPENAI_FORM:
 
     // フォームの表示。
     #_ = member(#CHATGPT_OBJ, "CreateForm", $OPENAI_KEY);
+
+    return;
+
+
+// アウトプット枠への表示
+OUTPUTPANE_WRITELINE:
+    $$msg = $$1;
+
+    #OUTPUTPANE = loaddll("HmOutputPane.dll");
+    #ret=dllfunc(#OUTPUTPANE, "Output", hidemaruhandle(0), $$msg + "\r\n");
 
     return;

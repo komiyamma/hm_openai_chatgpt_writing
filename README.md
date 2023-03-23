@@ -8,6 +8,6 @@
 ![.NET 6.0](https://img.shields.io/badge/.NET-6.0-6479ff.svg)
 
 「秀丸エディタ」で「ChatGPT」を使って「構造的な文章作成」を支援するためのコンポーネント  
-(※デフォルトでは「ChatGPT 3.5Turbo」が設定されていますが、「ChatGPT 4.0」など他の会話エンジンを設定することも可能です)
+(※デフォルトでは「ChatGPT 3.5Turbo」が設定されていますが、「ChatGPT 4.0」など他の会話モデルも設定可能)
 
 https://秀丸マクロ.net/?page=nobu_tool_hm_chatgpt_writing

@@ -1,0 +1,2 @@
+# hm_openai_chatgpt_writing
+秀丸エディタで ChatGPTを使って 構造的な文章作成を自動支援

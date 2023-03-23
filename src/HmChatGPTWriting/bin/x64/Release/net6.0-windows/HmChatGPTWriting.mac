@@ -17,9 +17,8 @@ SET_OPENAI_KEY:
     }
 
 SET_MODEL:
-    $MODEL = "gpt-3.5-turbo"; // gpt-4 なども設定可能だが、値段が10倍以上に跳ね上がるので注意。
+    $MODEL = "gpt-3.5-turbo"; // あなたのOpenAIアカウント内のAPIで、gpt-4 以上が使えるならば、"gpt-4"などの設定可能。しかしながら値段が10倍以上に跳ね上がるので注意。
 
-// 選択テキストの保持 ($HmSelectedTextという変数名を変更しないこと)
 SAVE_SELECTED_TEXT:
 
     if (selecting) {
@@ -93,7 +92,7 @@ SHOW_MENU_AND_SELECT:
     } else {
 
         call ADD_MENUITEM
-            "履歴の削除 ⇐ (AIリセット＆消費トークンの節約)",
+            "(&H)履歴の削除 ⇐ (AIリセット＆消費トークンの節約)",
             "HmChatGPTWriting:ClearConversationChatGPT"; // 勝手に文字列変更しないこと。
 
         // メニューの選択
@@ -107,7 +106,8 @@ SHOW_MENU_AND_SELECT:
 
 // AIに分析してもらう文字列
 SETTING_ANALYSISTEXT:
-    $HmTargetAnalyzeText = $EXPRESSION[#selected_item-1]; // この$HmTargetAnalyzeTextという変数名は固定なので変更しないこと。
+    // この$HmTargetAnalyzeTextという変数名は固定なので変更しないこと。
+    $HmTargetAnalyzeText = $EXPRESSION[#selected_item-1];
 
 
 // 他の秀丸プロセスでHmOpenAIGPTWritingが使われているかどうか

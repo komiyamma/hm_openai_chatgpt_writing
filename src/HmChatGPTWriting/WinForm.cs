@@ -138,7 +138,7 @@ class AppForm : Form
         };
 
         pb.Image = Resource.thinking;
-        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 5);
+        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 6);
 
         this.Controls.Add(pb);
 
@@ -155,12 +155,13 @@ class AppForm : Form
         {
             Text = "中断",
             UseVisualStyleBackColor = true,
-            Top = 2,
+            Top = 3,
             Left = 100,
             Width = 96,
             Height = 20
         };
 
+        btnCancel.Location = new Point((this.ClientSize.Width - btnCancel.Width) / 2, Top);
         btnCancel.Enabled = false;
         btnCancel.Click += BtnCancel_Click;
         this.Controls.Add(btnCancel);

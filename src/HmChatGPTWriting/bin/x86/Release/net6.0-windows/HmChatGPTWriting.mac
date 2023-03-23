@@ -45,8 +45,11 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&S)構成内容の下書き ⇐ 選択中の構成ツリー",
-            "以下の構成内容に当てはめて、それぞれの項目について下書きの文章を考えてください\n\n" + $HmSelectedText;
+            "以下の構成内容に関して、それぞれに具体的内容の文章を考えてください\n\n" + $HmSelectedText;
 
+        call ADD_MENUITEM
+            "\x01",
+            "";
         call ADD_MENUITEM
             "(&E)簡潔文章案 ⇐ 選択中の文章",
             "以下の文章の全てを簡潔な文章に直して下さい。\n\n" + $HmSelectedText;
@@ -73,7 +76,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&K)根拠やデータ ⇐ 選択中の文章",
-            "以下の文章の根拠やデータを提示してください、必要に応じてアスキーアートを使って下さい。\n\n" + $HmSelectedText;
+            "以下の文章の根拠やデータを提示してください、必要に応じて「表」や「アスキーアートを使ったグラフ」を使って下さい。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",

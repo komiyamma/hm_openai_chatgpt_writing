@@ -190,6 +190,8 @@ class AppForm : Form
     // AIに質問内容を追加し、TextBox⇒アウトプット枠へとメッセージを移動したかのような表示とする。
     private void PostQuestion()
     {
+        output.Push();
+
         var trim = textBuffer.TrimEnd();
         if (String.IsNullOrEmpty(trim))
         {
@@ -259,8 +261,9 @@ class AppForm : Form
 
         input.ClearReadBuffer();
 
-        this.Close();
+        output.Pop();
 
+        this.Close();
     }
 
     // 送信ボタンを押すと、質問内容をAIに登録、答えを得る処理へ

@@ -111,6 +111,7 @@ class OpenAIChatMain
         messageList = list;
     }
 
+    /*
     // チャットのエンジンやオプション。過去のチャット内容なども渡す。
     async Task<ChatCompletionCreateResponse> ReBuildPastChatContents(CancellationToken ct)
     {
@@ -147,6 +148,44 @@ class OpenAIChatMain
         }
         return completionResult;
     }
+    */
+
+    // チャットのエンジンやオプション。過去のチャット内容なども渡す。
+    IAsyncEnumerable<ChatCompletionCreateResponse> ReBuildPastChatContents(CancellationToken ct)
+    {
+        var key = GetOpenAIKey();
+        if (key == null)
+        {
+            throw new OpenAIKeyNotFoundException(ErrorMessageNoOpenAIKey);
+        }
+
+        List<ChatMessage> list = new();
+        if (openAiService == null)
+        {
+            openAiService = ConnectOpenAIService(key);
+        }
+        if (openAiService == null)
+        {
+            throw new OpenAIServiceNotFoundException(ErrorMessageNoOpenAIService);
+        }
+
+        // オプション。1000～2000トークンぐらいでセーフティかけておくのがいいだろう。
+        // 元々ChatGPTの方でも4000トークンぐらいでセーフティがかかってる模様
+        var options = new ChatCompletionCreateRequest
+        {
+            Messages = messageList,
+            Model = this.model,
+            MaxTokens = 2000
+        };
+
+        // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。
+        var completionResult =  openAiService.ChatCompletion.CreateCompletionAsStream(options, null, ct);
+        if (completionResult == null)
+        {
+            throw new OpenAIServiceNotFoundException(ErrorMessageNoOpenAIService);
+        }
+        return completionResult;
+    }
 
 
     const string AssistanceAnswerCompleteMsg = NewLine + "-- 完了 --" + NewLine;
@@ -159,6 +198,7 @@ class OpenAIChatMain
         return AssistanceAnswerCancelMsg;
     }
 
+    /*
     public async Task AddAnswer(CancellationToken ct)
     {
         string answer_sum = "";
@@ -199,6 +239,59 @@ class OpenAIChatMain
         // 解答が完了したよ～というのを人にわかるように表示
         output.WriteLine(AssistanceAnswerCompleteMsg);
     }
+    */
+
+    public async Task AddAnswer(CancellationToken ct)
+    {
+        string answer_sum = "";
+        var completionResult = ReBuildPastChatContents(ct);
+
+        // ストリーム型で確立しているので、async的に扱っていく
+        await foreach (var completion in completionResult)
+        {
+            // キャンセルが要求された時、
+            if (ct.IsCancellationRequested)
+            {
+                // 一応Dispose呼んでおく(CancellationToken渡しているので不要なきもするが...)
+                await completionResult.GetAsyncEnumerator().DisposeAsync();
+                throw new OperationCanceledException(AssistanceAnswerCancelMsg);
+            }
+
+            // キャンセルされてたら OperationCanceledException を投げるメソッド
+            ct.ThrowIfCancellationRequested();
+
+            // 会話成功なら
+            if (completion.Successful)
+            {
+                // ちろっと文字列追加表示
+                string? str = completion.Choices.FirstOrDefault()?.Message.Content;
+                if (str != null)
+                {
+                    output.Write(str);
+                    answer_sum += str ?? "";
+                }
+            }
+            else
+            {
+                // 失敗なら何かエラーと原因を表示
+                if (completion.Error == null)
+                {
+                    throw new Exception(ErrorMsgUnknown);
+                }
+
+                output.WriteLine($"{completion.Error.Code}: {completion.Error.Message}");
+            }
+        }
+
+        // 今回の返答ををChatGPTの返答として記録しておく
+        messageList.Add(ChatMessage.FromAssistant(answer_sum));
+
+        output.AddMessageBuffer(answer_sum);
+
+        // 解答が完了したよ～というのを人にわかるように表示
+        output.WriteLine(AssistanceAnswerCompleteMsg);
+    }
+
 
     // 質問内容はそのまま履歴に追加する
     public void AddQuestion(string question)

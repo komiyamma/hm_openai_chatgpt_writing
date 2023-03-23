@@ -14,4 +14,8 @@ interface IOutputWriter
 
     int WriteLine(string msg);
 
+    int Push();
+
+    int Pop();
+
 }

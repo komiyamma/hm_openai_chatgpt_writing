@@ -153,17 +153,22 @@ SELECT_MENU:
 
 // 選択を解除し、カーソル位置を整える。
 REPOSITION_CURSOR:
-    // 先頭だということは、前の行一杯を選択している。
-    if (selendcolumn == 0) {
-        moveto2 selendcolumn, selendlineno-1;
-    // その他は行の途中まで選択している
+    begingroupundo;
+
+    // 選択範囲の終端が先頭意外なら、その行の一部を選択している。
+    if (selendcolumn != 0) {
+        ##column_ontheway = 1;
     } else {
-        moveto2 selendcolumn, selendlineno;
+        ##column_ontheway = 0;
     }
+    moveto2 selendcolumn, selendlineno;
     escape;
-    golineend;
+    if (##column_ontheway) {
+        golineend;
+    }
     insertreturn;
     insertreturn;
+    endgroupundo;
     return;
 
 

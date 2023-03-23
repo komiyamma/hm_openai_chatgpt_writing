@@ -1,4 +1,5 @@
-﻿interface IInputReader
+﻿namespace HmOpenAIChatGptWriting;
+interface IInputReader
 {
     string ReadText();
 }

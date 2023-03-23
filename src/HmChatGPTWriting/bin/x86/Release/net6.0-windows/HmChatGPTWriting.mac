@@ -20,27 +20,27 @@ SET_OPENAI_KEY:
 SAVE_SELECTED_TEXT:
 
     if (selecting) {
-        $HmSelectedText = gettext2( seltopcolumn, seltoplineno, selendcolumn, selendlineno, 1 );
+        $HmSelectedText = gettext2( seltopcolumn, seltoplineno, selendcolumn, selendlineno );
     }
 
 
-// 他の秀丸プロセスでHmOpenAIGPT35Turboが使われているかどうか
+// 他の秀丸プロセスでHmOpenAIGPTWritingが使われているかどうか
 CHECK_OPENAI_USED_HIDEMARUHANDLE:
 
-    // HmOpenAIGPT35Turbo のウィンドウが無い
-    if (! findwindow("*-- HmChatGPT35Turbo --*")) {
+    // HmOpenAIGPTWriting のウィンドウが無い
+    if (! findwindow("*-- HmChatGPTWriting --*")) {
 
         // 普段通りの処理を実行
         call SHOW_OPENAI_FORM;
 
-    // HmOpenAIGPT35Turbo のウィンドウが既にある
+    // HmOpenAIGPTWriting のウィンドウが既にある
     } else {
 
         #JUDGE_OBJ = createobject( currentmacrodirectory + @"\HmChatGPTWriting.comhost.dll", "{044C142D-059B-4A6D-BBAC-9B3F276EE030}");
 
         #OpeningFormHidemaruHandle = member(#JUDGE_OBJ, "GetFormHideamruHandle");
 
-        // HmOpenAIGPT35Turboを使っている有効な秀丸ハンドルがある
+        // HmOpenAIGPTWritingを使っている有効な秀丸ハンドルがある
         if (#OpeningFormHidemaruHandle > 0 ) {
 
             #CurrentHidemaruHandle = hidemaruhandle(0);

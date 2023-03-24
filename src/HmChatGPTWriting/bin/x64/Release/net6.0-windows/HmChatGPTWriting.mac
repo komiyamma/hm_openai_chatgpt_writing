@@ -55,7 +55,7 @@ SHOW_MENU_AND_SELECT:
             "以下の文章の全てを簡潔な文章に直して下さい。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
-            "(&Y)超要約案 ⇐ 選択中の文章全体",
+            "(&Y)超要約案 ⇐ 選択中の文章",
             "以下の文章全体を出来るだけ短い文章で要約してください。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM

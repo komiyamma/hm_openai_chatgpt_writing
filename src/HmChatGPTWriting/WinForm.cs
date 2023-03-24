@@ -212,6 +212,7 @@ class AppForm : Form
     // ChatGPTの解答を得る。中断できるようにCancellationTokenを渡す。
     private async Task GetAnswer()
     {
+        bool error = false;
         try
         {
             if (btnCancel != null)
@@ -232,6 +233,7 @@ class AppForm : Form
         }
         catch (OperationCanceledException ex)
         {
+            error = true;
             if (ex.Message == "The operation was canceled." || ex.Message == "A task was canceled.")
             {
                 if (ai != null) { 
@@ -246,6 +248,7 @@ class AppForm : Form
         }
         catch (Exception ex)
         {
+            error = true;
             string err = ex.Message + NewLine + ex.StackTrace;
             output.WriteLine(err);
         }
@@ -256,14 +259,17 @@ class AppForm : Form
             {
                 btnCancel.Enabled = false;
             }
+
+            output.FlushMessage();
+
+            input.ClearReadBuffer();
+
+            if (error == false) { 
+                output.Pop();
+            }
+
+            this.Close();
         }
-        output.FlushMessage();
-
-        input.ClearReadBuffer();
-
-        output.Pop();
-
-        this.Close();
     }
 
     // 送信ボタンを押すと、質問内容をAIに登録、答えを得る処理へ

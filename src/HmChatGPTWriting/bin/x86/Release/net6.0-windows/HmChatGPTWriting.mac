@@ -33,7 +33,7 @@ SHOW_MENU_AND_SELECT:
     if (selecting) {
         call ADD_MENUITEM
             "(&T)タイトル考案 ⇐ 選択中の複数の単語", 
-            "以下のキーワードを基にタイトルを９個提案してください\n\n" + $HmSelectedText;
+            "以下のキーワードを基に日本語でタイトルを９個提案してください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&O)アウトライン案 ⇐ 選択中の単語群もしくはタイトル",

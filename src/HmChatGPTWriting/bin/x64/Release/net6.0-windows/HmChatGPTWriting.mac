@@ -36,7 +36,7 @@ SHOW_MENU_AND_SELECT:
             "以下のキーワードを基にタイトルを９個提案してください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
-            "(&O)記事構成案 ⇐ 選択中の単語群もしくはタイトル",
+            "(&O)アウトライン案 ⇐ 選択中の単語群もしくはタイトル",
             "以下のキーワードを基に記事構成案を考えてください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
@@ -44,7 +44,7 @@ SHOW_MENU_AND_SELECT:
             "";
 
         call ADD_MENUITEM
-            "(&S)構成内容の下書き ⇐ 選択中の構成ツリー",
+            "(&S)文面タタキ案 ⇐ 選択中のアウトラインの一部",
             "以下の構成内容に関して、それぞれに具体的内容の文章を考えてください\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
@@ -105,10 +105,10 @@ SHOW_MENU_AND_SELECT:
             endmacro;
         }
 
-        // if (strstr($EXPRESSION[#selected_item], "HmChatGPTWriting:") < 0) {
+        if (strstr($EXPRESSION[#selected_item-1], "HmChatGPTWriting:") < 0) {
             // 選択を解除して、カーソル位置を次の行に整える。
             call REPOSITION_CURSOR;
-        // }
+        }
 
     } else {
 

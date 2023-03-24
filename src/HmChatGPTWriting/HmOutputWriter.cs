@@ -38,6 +38,9 @@ public class HmOutputWriter : IOutputWriter
         catch (Exception ex)
         {
         }
+        finally
+        {
+        }
 
         return (IntPtr)1;
     }

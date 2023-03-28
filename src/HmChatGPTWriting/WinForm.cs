@@ -48,7 +48,7 @@ class AppForm : Form
         this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
         this.Padding = new System.Windows.Forms.Padding(5);
-        this.AutoScaleMode = AutoScaleMode.Font;
+        this.AutoScaleMode = AutoScaleMode.Dpi;
     }
 
     private void AppForm_Shown(object? sender, EventArgs e)

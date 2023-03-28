@@ -40,9 +40,15 @@ class AppForm : Form
     // フォーム属性の設定
     void SetForm()
     {
+        int DisplayDpi = 96;
+        if (this.DeviceDpi > 96)
+        {
+            DisplayDpi = this.DeviceDpi;
+        }
+
         this.Text = "*-- HmChatGPTWriting --*";
-        this.Width = 300;
-        this.Height = 120;
+        this.Width = (int)((300 * DisplayDpi) / 96);
+        this.Height = (int)((120 * DisplayDpi) / 96);
         this.Opacity = 0.8;
         this.MaximumSize = new Size(Width, Height) ;
         this.Shown += AppForm_Shown;
@@ -132,7 +138,6 @@ class AppForm : Form
 
     void SetPictureBox()
     {
-
         pb = new PictureBox()
         {
             Width = 33,
@@ -142,7 +147,11 @@ class AppForm : Form
         };
 
         pb.Image = Resource.thinking;
-        pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + 10);
+
+        if (btnCancel != null)
+        {
+            pb.Location = new Point((this.ClientSize.Width - pb.Width) / 2, (this.ClientSize.Height - pb.Height) / 2 + (btnCancel.Height / 2));
+        }
 
         this.Controls.Add(pb);
 
@@ -155,14 +164,22 @@ class AppForm : Form
 
     void SetCancelButton()
     {
+        int width = 96;
+        int height = 24;
+        if (this.DeviceDpi > width)
+        {
+            width = this.DeviceDpi;
+            height = (int)(this.DeviceDpi / 4);
+        }
+
         btnCancel = new Button()
         {
             Text = "中断",
             UseVisualStyleBackColor = true,
             Top = 5,
             Left = 100,
-            Width = 96,
-            Height = 22
+            Width = width,
+            Height = height
         };
 
         btnCancel.Location = new Point((this.ClientSize.Width - btnCancel.Width) / 2, btnCancel.Top);

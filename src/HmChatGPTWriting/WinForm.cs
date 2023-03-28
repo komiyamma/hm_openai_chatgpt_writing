@@ -48,6 +48,7 @@ class AppForm : Form
         this.Shown += AppForm_Shown;
         this.FormClosing += AppForm_FormClosing;
         this.Padding = new System.Windows.Forms.Padding(5);
+        this.AutoScaleMode = AutoScaleMode.Font;
     }
 
     private void AppForm_Shown(object? sender, EventArgs e)
@@ -137,7 +138,7 @@ class AppForm : Form
             Width = 33,
             Height = 33,
             Left = 100,
-            Top = 40
+            Top = 42
         };
 
         pb.Image = Resource.thinking;
@@ -161,7 +162,7 @@ class AppForm : Form
             Top = 5,
             Left = 100,
             Width = 96,
-            Height = 20
+            Height = 22
         };
 
         btnCancel.Location = new Point((this.ClientSize.Width - btnCancel.Width) / 2, btnCancel.Top);

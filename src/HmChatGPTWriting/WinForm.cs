@@ -304,7 +304,7 @@ class AppForm : Form
         {
             OpenAIChatMain.InitMessages();
             input.ClearReadBuffer();
-            output.WriteLine("-- 会話履歴をクリア --");
+            output.WriteLine("-- 履歴をクリア --");
         }
         catch (Exception ex)
         {

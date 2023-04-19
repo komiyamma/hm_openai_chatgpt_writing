@@ -140,11 +140,19 @@ class AppForm : Form
     {
         pb = new PictureBox()
         {
-            Width = 33,
-            Height = 33,
+            Width = 32,
+            Height = 32,
             Left = 100,
             Top = 42
         };
+
+        if (this.DeviceDpi > 96)
+        {
+            pb.Width = (int)(this.DeviceDpi / 3);
+            pb.Height = (int)(this.DeviceDpi / 3);
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
 
         pb.Image = Resource.thinking;
 

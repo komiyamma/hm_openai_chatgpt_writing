@@ -1,5 +1,5 @@
 ﻿/*--------------------------------------------
- * HmChatGPTWriting v1.0.6.0
+ * HmChatGPTWriting v1.0.6.1
  * 
  * Copyright (C) 2023 Akitsugu Komiyama
  * under the MIT License
@@ -101,6 +101,10 @@ SHOW_MENU_AND_SELECT:
         call ADD_MENUITEM
             "(&U)Youtube用脚本案 ⇐ 選択中の単語群もしくはタイトル",
             "Youtube用に「" + $HmSelectedText + "」についての動画を作成するから脚本を書いてください。";
+
+        call ADD_MENUITEM
+            "(&L)詳細台本案 ⇐ 選択中の脚本の一部分",
+            "以下の部分の詳細な台本を書いて下さい。\n\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",

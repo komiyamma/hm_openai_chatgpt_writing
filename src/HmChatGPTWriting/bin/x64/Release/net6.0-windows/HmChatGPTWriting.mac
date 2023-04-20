@@ -1,5 +1,5 @@
 ﻿/*--------------------------------------------
- * HmChatGPTWriting v1.0.5.9
+ * HmChatGPTWriting v1.0.6.0
  * 
  * Copyright (C) 2023 Akitsugu Komiyama
  * under the MIT License
@@ -93,6 +93,14 @@ SHOW_MENU_AND_SELECT:
         call ADD_MENUITEM
             "(&M)誤字脱字 ⇐ 選択中の文章",
             "以下の文章の全てに対して誤字脱字や、タイプミス、不適切な表現をチェックしてください。\n\n" + $HmSelectedText;
+
+        call ADD_MENUITEM
+            "\x01",
+            "";
+
+        call ADD_MENUITEM
+            "(&U)Youtube用脚本案 ⇐ 選択中の単語群もしくはタイトル",
+            "Youtube用に「" + $HmSelectedText + "」についての動画を作成するから脚本を書いてください。";
 
         call ADD_MENUITEM
             "\x01",

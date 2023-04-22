@@ -1,5 +1,5 @@
 ﻿/*--------------------------------------------
- * HmChatGPTWriting v1.0.6.1
+ * HmChatGPTWriting v1.0.6.2
  * 
  * Copyright (C) 2023 Akitsugu Komiyama
  * under the MIT License
@@ -84,7 +84,12 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&I)言葉の意味 ⇐ 選択中の単語",
-            "以下の言葉の意味を説明してください\n\n" + $HmSelectedText;
+            "以下の言葉の意味を説明してください\n\n" + $HmSelectedText + "\n\n" + 
+            "# 条件\n" +
+            "・架空の言葉である場合を考慮してください。\n" +
+            "・回答に自身がない場合は答えないでください。\n" +
+            "・不正確な可能性が高い場合は答えないでください。\n" +
+            "・理解できなければ答えないでください。\n";
 
         call ADD_MENUITEM
             "(&R)類似表現 ⇐ 選択中の単語",

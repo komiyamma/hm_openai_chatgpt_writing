@@ -33,7 +33,7 @@ public class HmChatGPTWriting
         form.BringToFront();
 
         form.AskQuestionToGpt();
-        
+
         return 1;
     }
 

@@ -2,7 +2,6 @@ G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\HmChatGPTWriting.deps.json
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\HmChatGPTWriting.runtimeconfig.json
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\HmChatGPTWriting.dll
-G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\OpenAI.GPT3.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\Microsoft.Extensions.Configuration.Binder.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
@@ -41,3 +40,4 @@ G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\refint\HmChatGPTWriting.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.genruntimeconfig.cache
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\ref\HmChatGPTWriting.dll
+G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x64\Release\net6.0-windows\OpenAI.dll

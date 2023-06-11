@@ -48,7 +48,7 @@
           "dependencies": {
             "Betalgo.OpenAI": {
               "target": "Package",
-              "version": "[6.8.5, )"
+              "version": "[7.0.0, )"
             },
             "HmNetCOM": {
               "target": "Package",

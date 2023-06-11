@@ -7,7 +7,7 @@
 ![Hidemaru 8.98](https://img.shields.io/badge/Hidemaru-v8.98-6479ff.svg)
 ![.NET 6.0](https://img.shields.io/badge/.NET-6.0-6479ff.svg)
 
-「秀丸エディタ」で「ChatGPT」を使って「構造的な文章作成」を支援するためのコンポーネント  
+「秀丸エディタ」で「ChatGPT」を使って「自動文章作成・自動アウトライン作成」をするためのコンポーネント  
 (※デフォルトでは「ChatGPT 3.5Turbo」が設定されていますが、「ChatGPT 4.0」など他の会話モデルも設定可能)
 
 https://秀丸マクロ.net/?page=nobu_tool_hm_chatgpt_writing

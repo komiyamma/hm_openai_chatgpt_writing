@@ -13,8 +13,9 @@ class AppForm : Form
 
     HmChatGPTWriteSharedMemory sm;
     string model = "";
+    int iMaxTokens = 2000;
 
-    public AppForm(string key, string models, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
+    public AppForm(string key, string models, int maxtokens, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
     {
         // 「入力」や「出力」の対象を外部から受け取り
         this.output = output;
@@ -22,6 +23,8 @@ class AppForm : Form
 
         this.sm = sm;
         this.model = models;
+
+        this.iMaxTokens = maxtokens;
 
         try
         {
@@ -332,7 +335,7 @@ class AppForm : Form
     {
         try
         {
-            ai = new OpenAIChatMain(key, model, output);
+            ai = new OpenAIChatMain(key, model, iMaxTokens, output);
         }
         catch (Exception ex)
         {

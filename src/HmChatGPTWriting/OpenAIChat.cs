@@ -30,14 +30,16 @@ class OpenAIChatMain
     const string ErrorMessageNoOpenAIKey = OpenAIKeyEnvironmentVariableName + "キーが環境変数にありません。:" + NewLine;
 
     string model = "";
+    int iMaxTokens;
 
-    public OpenAIChatMain(string key, string model, IOutputWriter output)
+    public OpenAIChatMain(string key, string model, int maxtokens, IOutputWriter output)
     {
         this.model = model;
         if (String.IsNullOrEmpty(model))
         {
             this.model = Models.ChatGpt3_5Turbo;
         }
+        this.iMaxTokens = maxtokens;
 
         // 出力対象のDI用
         this.output = output;
@@ -136,7 +138,7 @@ class OpenAIChatMain
         {
             Messages = messageList,
             Model = this.model,
-            MaxTokens = 2000
+            MaxTokens = iMaxTokens
         };
 
         // ストリームとして会話モードを確率する。ストリームにすると解答が１文字ずつ順次表示される。

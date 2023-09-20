@@ -37,7 +37,7 @@ class OpenAIChatMain
         this.model = model;
         if (String.IsNullOrEmpty(model))
         {
-            this.model = Models.ChatGpt3_5Turbo;
+            this.model = Models.Gpt_3_5_Turbo;
         }
         this.iMaxTokens = maxtokens;
 

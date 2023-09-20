@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "Betalgo.OpenAI/7.0.0": {
+      "Betalgo.OpenAI/7.1.5": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "6.0.0",
@@ -250,16 +250,16 @@
     }
   },
   "libraries": {
-    "Betalgo.OpenAI/7.0.0": {
-      "sha512": "6StzxEQmHJjp6oS5Vkhj5RN2KD94MqXWR4FACLCFSaz74v0nzh6SvUE/xVgh6crJRjAxrM36yKp/sA0KllW6vg==",
+    "Betalgo.OpenAI/7.1.5": {
+      "sha512": "EUaJaOX/5xrWva74ET5wkpJx37qb118a1x3ml4JdjseVGum2Stxbu5i7j1hamr0Ei9T+ei3Hp6TTSK10cl9TgA==",
       "type": "package",
-      "path": "betalgo.openai/7.0.0",
+      "path": "betalgo.openai/7.1.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "OpenAI-Betalgo.png",
         "Readme.md",
-        "betalgo.openai.7.0.0.nupkg.sha512",
+        "betalgo.openai.7.1.5.nupkg.sha512",
         "betalgo.openai.nuspec",
         "lib/net6.0/OpenAI.dll",
         "lib/net6.0/OpenAI.xml",
@@ -584,7 +584,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "Betalgo.OpenAI >= 7.0.0",
+      "Betalgo.OpenAI >= 7.1.5",
       "HmNetCOM >= 2.0.7.9"
     ]
   },
@@ -593,13 +593,13 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.6.1",
+    "version": "1.0.6.3",
     "restore": {
-      "projectUniqueName": "g:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
+      "projectUniqueName": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
       "projectName": "HmChatGPTWriting",
-      "projectPath": "g:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
+      "projectPath": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
       "packagesPath": "C:\\Users\\master\\.nuget\\packages\\",
-      "outputPath": "g:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\obj\\",
+      "outputPath": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -635,7 +635,7 @@
         "dependencies": {
           "Betalgo.OpenAI": {
             "target": "Package",
-            "version": "[7.0.0, )"
+            "version": "[7.1.5, )"
           },
           "HmNetCOM": {
             "target": "Package",
@@ -661,7 +661,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

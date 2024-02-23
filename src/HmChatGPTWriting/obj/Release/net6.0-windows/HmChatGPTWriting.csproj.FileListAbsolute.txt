@@ -35,9 +35,9 @@ G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.AssemblyInfoInputs.cache
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.AssemblyInfo.cs
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.csproj.CoreCompileInputs.cache
-G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.csproj.CopyComplete
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\refint\HmChatGPTWriting.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGPTWriting.genruntimeconfig.cache
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\ref\HmChatGPTWriting.dll
 G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\bin\x86\Release\net6.0-windows\OpenAI.dll
+G:\repogitory\hm_openai_chatgpt_writing\src\HmChatGPTWriting\obj\Release\net6.0-windows\HmChatGP.CFEF28B0.Up2Date

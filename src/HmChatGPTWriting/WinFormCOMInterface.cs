@@ -64,12 +64,31 @@ public class HmChatGPTWriteSharedMemory
         try
         {
             // 新規にメモリマップを作成して、そこに現在の秀丸ハンドルを数値として入れておく
-            share_mem = MemoryMappedFile.CreateNew("HmChatGPTWriteSharedMem", 8);
-            MemoryMappedViewAccessor accessor = share_mem.CreateViewAccessor();
-            accessor.Write(0, (long)Hm.WindowHandle);
-            accessor.Dispose();
+            if (share_mem == null)
+            {
+                share_mem = MemoryMappedFile.CreateNew("HmChatGPTWriteSharedMem", 8);
+            }
         }
-        catch (Exception) { }
+        catch (Exception e)
+        {
+        }
+
+        try
+        {
+            using (var share_mem = MemoryMappedFile.OpenExisting("HmChatGPTWriteSharedMem"))
+            {
+                if (share_mem != null)
+                {
+                    using (var accessor = share_mem.CreateViewAccessor())
+                    {
+                        accessor.Write(0, (long)Hm.WindowHandle);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+        }
     }
 
     public long GetSharedMemory()
@@ -77,13 +96,17 @@ public class HmChatGPTWriteSharedMemory
         long value = 0;
         try
         {
-            // (主に)違うプロセスからメモリマップの数値を読み込む
-            share_mem = MemoryMappedFile.OpenExisting("HmChatGPTWriteSharedMem");
-            MemoryMappedViewAccessor accessor = share_mem.CreateViewAccessor();
-            value = accessor.ReadInt64(0);
-            accessor.Dispose();
+            using (var share_mem = MemoryMappedFile.OpenExisting("HmChatGPTWriteSharedMem"))
+            {
+                using (var accessor = share_mem.CreateViewAccessor())
+                {
+                    value = accessor.ReadInt64(0);
+                }
+            }
         }
-        catch (Exception) { }
+        catch (Exception)
+        {
+        }
 
         return value;
     }
@@ -95,14 +118,27 @@ public class HmChatGPTWriteSharedMemory
             if (share_mem != null)
             {
                 // メモリマップを削除。
-                MemoryMappedViewAccessor accessor = share_mem.CreateViewAccessor();
-                accessor.Write(0, (long)0);
-                accessor.Dispose();
+                using (var accessor = share_mem.CreateViewAccessor())
+                {
+                    accessor.Write(0, (long)0);
+                }
+            }
+        }
+        catch (Exception)
+        {
+        }
+
+        try
+        {
+            if (share_mem != null)
+            {
                 share_mem.Dispose();
                 share_mem = null;
             }
         }
-        catch (Exception) { }
+        catch (Exception)
+        {
+        }
     }
 
 

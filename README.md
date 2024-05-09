@@ -1,6 +1,6 @@
 # HmChatGPTWriting
 
-![HmChatGPTWriting v1.0.6](https://img.shields.io/badge/HmChatGPTWriting-v1.0.6-6479ff.svg)
+![HmChatGPTWriting v1.0.7](https://img.shields.io/badge/HmChatGPTWriting-v1.0.7-6479ff.svg)
 ![ChatGPT 3.5 Turbo](https://img.shields.io/badge/ChatGPT-3.5_Turbo-6479ff.svg)
 ![ChatGPT 4 Turbo](https://img.shields.io/badge/ChatGPT-4_Turbo-6479ff.svg)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)

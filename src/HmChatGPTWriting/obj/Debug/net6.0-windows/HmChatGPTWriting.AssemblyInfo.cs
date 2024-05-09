@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Akitsugu Komiyama")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.6.3")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.6.3+7b8f877376f84953cefe7a2b9b94419ab02d1a65")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.6.3+5777d2498e5b1b96906c6d256eaf84c04496c332")]
 [assembly: System.Reflection.AssemblyProductAttribute("HmChatGPTWriting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HmChatGPTWriting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.6.3")]

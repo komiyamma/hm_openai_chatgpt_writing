@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|solutionrelative:hmchatgptwriting\\hmchatgptwriting.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|g:\\repogitory\\hm_openai_chatgpt_writing\\src\\hmchatgptwriting\\hmchatgptwriting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|solutionrelative:hmchatgptwriting\\hmchatgptwriting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|g:\\repogitory\\hm_openai_chatgpt_writing\\src\\hmchatgptwriting\\winformcominterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|solutionrelative:hmchatgptwriting\\winformcominterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|g:\\repogitory\\hm_openai_chatgpt_writing\\src\\hmchatgptwriting\\winform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|solutionrelative:hmchatgptwriting\\winform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|g:\\repogitory\\hm_openai_chatgpt_writing\\src\\hmchatgptwriting\\hmchatgptwriting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|solutionrelative:hmchatgptwriting\\hmchatgptwriting.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55774E11-538A-4560-8B0C-BAA17E75C622}|HmChatGPTWriting\\HmChatGPTWriting.csproj|g:\\repogitory\\hm_openai_chatgpt_writing\\src\\hmchatgptwriting\\hmchatgptwriting.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}",
@@ -62,7 +62,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "HmNetCOM.tt",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmNetCOM.tt",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\HmNetCOM.tt",
@@ -70,7 +70,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmNetCOM.tt",
               "ViewState": "AQIAAHAKAAAAAAAAAAAgwI8KAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2023-09-20T13:59:39.638Z"
+              "WhenOpened": "2023-09-20T13:59:39.638Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -86,19 +87,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "HmChatGPTWriting.csproj",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvw4AAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwv1UAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-11T19:22:01.35Z"
+              "WhenOpened": "2023-06-11T19:22:01.35Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "OpenAIChat.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\OpenAIChat.cs",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\OpenAIChat.cs",
@@ -106,11 +108,12 @@
               "RelativeToolTip": "HmChatGPTWriting\\OpenAIChat.cs",
               "ViewState": "AQIAAHoAAAAAAAAAAAAkwJAAAABsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-11T19:11:08.646Z"
+              "WhenOpened": "2023-06-11T19:11:08.646Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "WinForm.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\WinForm.cs",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\WinForm.cs",
@@ -118,23 +121,25 @@
               "RelativeToolTip": "HmChatGPTWriting\\WinForm.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-01T12:12:59.055Z"
+              "WhenOpened": "2023-06-01T12:12:59.055Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WinFormCOMInterface.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\WinFormCOMInterface.cs",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\WinFormCOMInterface.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\WinFormCOMInterface.cs",
               "RelativeToolTip": "HmChatGPTWriting\\WinFormCOMInterface.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAA0wHkAAAARAAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAYwHkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-14T16:23:22.628Z"
+              "WhenOpened": "2023-06-14T16:23:22.628Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "HmNetCOM.cs",
               "DocumentMoniker": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmNetCOM.cs",
               "RelativeDocumentMoniker": "HmChatGPTWriting\\HmNetCOM.cs",
@@ -142,7 +147,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmNetCOM.cs",
               "ViewState": "AQIAAGEKAAAAAAAAAAAYwIMKAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-14T16:23:17.448Z"
+              "WhenOpened": "2023-06-14T16:23:17.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -154,7 +160,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\obj\\Release\\net6.0-windows\\HmChatGPTWriting.AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-11T19:21:41.406Z"
+              "WhenOpened": "2023-06-11T19:21:41.406Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -165,7 +172,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\Resource.resx",
               "RelativeToolTip": "HmChatGPTWriting\\Resource.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2023-06-01T12:09:24.067Z"
+              "WhenOpened": "2023-06-01T12:09:24.067Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -176,7 +184,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-01T12:09:15.25Z"
+              "WhenOpened": "2023-06-01T12:09:15.25Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -186,9 +195,10 @@
               "RelativeDocumentMoniker": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwv1UAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-01T12:09:15.304Z"
+              "WhenOpened": "2023-06-01T12:09:15.304Z",
+              "EditorCaption": ""
             }
           ]
         }

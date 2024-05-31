@@ -18,7 +18,7 @@ class OpenAIServiceNotFoundException : Exception
     public OpenAIServiceNotFoundException(string msg) : base(msg) { }
 }
 
-class OpenAIChatMain
+partial class OpenAIChatMain
 {
     // 出力対象のDI用
     IOutputWriter output;
@@ -31,8 +31,9 @@ class OpenAIChatMain
 
     string model = "";
     int iMaxTokens;
+    static int iRemoveAutoMessageListMinutes;
 
-    public OpenAIChatMain(string key, string model, int maxtokens, IOutputWriter output)
+    public OpenAIChatMain(string key, string model, int maxtokens, IOutputWriter output, int remove_auto_messagelist)
     {
         this.model = model;
         if (String.IsNullOrEmpty(model))
@@ -40,6 +41,7 @@ class OpenAIChatMain
             this.model = Models.Gpt_3_5_Turbo;
         }
         this.iMaxTokens = maxtokens;
+        iRemoveAutoMessageListMinutes = remove_auto_messagelist;
 
         // 出力対象のDI用
         this.output = output;
@@ -111,6 +113,12 @@ class OpenAIChatMain
             ChatMessage.FromSystem(ChatGPTStartSystemMessage)
         };
         messageList = list;
+
+        // 会話履歴の自動削除モードなら
+        if (iRemoveAutoMessageListMinutes > 0)
+        {
+            InitMessageListCancelToken();
+        }
     }
 
     // チャットのエンジンやオプション。過去のチャット内容なども渡す。
@@ -206,19 +214,12 @@ class OpenAIChatMain
         }
 
         // 今回の返答ををChatGPTの返答として記録しておく
-        messageList.Add(ChatMessage.FromAssistant(answer_sum));
+        AddAnswer(answer_sum);
 
         output.AddMessageBuffer(answer_sum);
 
         // 解答が完了したよ～というのを人にわかるように表示
         output.WriteLine(AssistanceAnswerCompleteMsg);
-    }
-
-
-    // 質問内容はそのまま履歴に追加する
-    public void AddQuestion(string question)
-    {
-        messageList.Add(ChatMessage.FromUser(question));
     }
 }
 

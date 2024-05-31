@@ -14,8 +14,9 @@ class AppForm : Form
     HmChatGPTWriteSharedMemory sm;
     string model = "";
     int iMaxTokens = 2000;
+    int iAutoMsgListRemove = 1;
 
-    public AppForm(string key, string models, int maxtokens, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
+    public AppForm(string key, string models, int maxtokens, int remove_auto_messagelist, IOutputWriter output, IInputReader input, HmChatGPTWriteSharedMemory sm)
     {
         // 「入力」や「出力」の対象を外部から受け取り
         this.output = output;
@@ -101,6 +102,16 @@ class AppForm : Form
         {
             // ここは必ず例外でるので不要。
         }
+
+        try
+        {
+            // メッセージリストのオートリムーバーのキャンセルをしておく。(うーんぐだぐだだなー)
+            // OpenAIChatMain.CancelMessageListCancelToken();
+        }
+        catch (Exception)
+        {
+        }
+
     }
 
     string textBuffer = "";
@@ -335,7 +346,7 @@ class AppForm : Form
     {
         try
         {
-            ai = new OpenAIChatMain(key, model, iMaxTokens, output);
+            ai = new OpenAIChatMain(key, model, iMaxTokens, output, iAutoMsgListRemove);
         }
         catch (Exception ex)
         {

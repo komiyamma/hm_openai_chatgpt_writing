@@ -15,7 +15,7 @@ public class HmChatGPTWriting
 
     HmChatGPTWriteSharedMemory sm = new HmChatGPTWriteSharedMemory();
 
-    public long CreateForm(string key = "", string model = "", int maxtokens = 2000)
+    public long CreateForm(string key = "", string model = "", int maxtokens = 2000, int remove_auto_messagelist = 1)
     {
         if (form != null)
         {
@@ -25,7 +25,7 @@ public class HmChatGPTWriting
         {
             output = new HmOutputWriter();
             input = new HmInputReader();
-            form = new AppForm(key, model, maxtokens, output, input, sm);
+            form = new AppForm(key, model, maxtokens, remove_auto_messagelist, output, input, sm);
         }
 
         form.Show();

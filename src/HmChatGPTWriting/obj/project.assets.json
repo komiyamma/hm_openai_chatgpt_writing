@@ -595,7 +595,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.7.6",
+    "version": "1.0.8.2",
     "restore": {
       "projectUniqueName": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
       "projectName": "HmChatGPTWriting",
@@ -668,7 +668,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,5 +1,5 @@
 ﻿/*--------------------------------------------
- * HmChatGPTWriting v1.0.8.4
+ * HmChatGPTWriting v1.0.8.5
  * 
  * Copyright (C) 2024 Akitsugu Komiyama
  * under the MIT License
@@ -57,11 +57,11 @@ SHOW_MENU_AND_SELECT:
     if (selecting) {
         call ADD_MENUITEM
             "(&T)タイトル考案 ⇐ 選択中の複数の単語", 
-            "次に示すキーワードを基に日本語でタイトルを９個提案してください\n###\n" + $HmSelectedText;
+            "次に示すキーワードを基に日本語でタイトルを９個提案してください\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&O)アウトライン案 ⇐ 選択中の単語群もしくはタイトル",
-            "次に示すキーワードを基に記事構成案を考えてください\n###\n" + $HmSelectedText;
+            "次に示すキーワードを基に記事構成案を考えてください\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -69,30 +69,30 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&S)文面タタキ案 ⇐ 選択中のアウトラインの一部",
-            "次に示すの構成内容に関して、それぞれに具体的内容の文章を考えてください\n###\n" + $HmSelectedText;
+            "次に示すの構成内容に関して、それぞれに具体的内容の文章を考えてください\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
             "";
         call ADD_MENUITEM
             "(&E)簡潔文章案 ⇐ 選択中の文章",
-            "次に示す文章の全てを簡潔な文章に直して下さい。\n###\n" + $HmSelectedText;
+            "次に示す文章の全てを簡潔な文章に直して下さい。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&Y)超要約案 ⇐ 選択中の文章",
-            "次に示す文章全体を出来るだけ短い文章で要約してください。\n###\n" + $HmSelectedText;
+            "次に示す文章全体を出来るだけ短い文章で要約してください。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&W)ツイート長 ⇐ 選択中の文章",
-            "次に示す文章をツイッターのツイートに収まる100文字以上140文字未満の文章に要約してください。\n###\n" + $HmSelectedText;
+            "次に示す文章をツイッターのツイートに収まる100文字以上140文字未満の文章に要約してください。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&D)詳細文章案 ⇐ 選択中の文章",
-            "次に示す文章の全てを深い内容の詳細な文章に直して下さい。\n###\n" + $HmSelectedText;
+            "次に示す文章の全てを深い内容の詳細な文章に直して下さい。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&C)変更文章案 ⇐ 選択中の文章",
-            "次に示す文章を文章構成を大きく変更して書き換えてください。３つ提示してください。\n###\n" + $HmSelectedText;
+            "次に示す文章を文章構成を大きく変更して書き換えてください。３つ提示してください。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -100,7 +100,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&K)根拠やデータ ⇐ 選択中の文章",
-            "次に示す文章の根拠やデータを提示してください、必要に応じて「表」や「アスキーアートを使ったグラフ」を使って下さい。\n###\n" + $HmSelectedText;
+            "次に示す文章の根拠やデータを提示してください、必要に応じて「表」や「アスキーアートを使ったグラフ」を使って下さい。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -108,7 +108,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&I)言葉の意味 ⇐ 選択中の単語",
-            "次に示す言葉の意味を説明してください\n###\n" + $HmSelectedText + "\n###\n" + 
+            "次に示す言葉の意味を説明してください\n---\n" + $HmSelectedText + "\n---\n" + 
             "# 条件\n" +
             "・架空の言葉である場合を考慮してください。\n" +
             "・回答に自身がない場合は答えないでください。\n" +
@@ -117,11 +117,11 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&R)類似表現 ⇐ 選択中の単語",
-            "次に示す単語の類似表現を９個提案してください\n###\n" + $HmSelectedText;
+            "次に示す単語の類似表現を９個提案してください\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "(&M)誤字脱字 ⇐ 選択中の文章",
-            "次に示す文章の誤字脱字や、タイプミス、不適切な表現をチェックしてください。不適切な部分のみ指摘してください。\n###\n" + $HmSelectedText;
+            "次に示す文章の誤字脱字や、タイプミス、不適切な表現をチェックしてください。不適切な部分のみ指摘してください。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -133,7 +133,7 @@ SHOW_MENU_AND_SELECT:
 
         call ADD_MENUITEM
             "(&L)詳細台本案 ⇐ 選択中の脚本の一部分",
-            "次に示す部分の詳細な台本を書いて下さい。\n###\n" + $HmSelectedText;
+            "次に示す部分の詳細な台本を書いて下さい。\n---\n" + $HmSelectedText;
 
         call ADD_MENUITEM
             "\x01",
@@ -230,7 +230,7 @@ REPOSITION_CURSOR:
     moveto2 selendcolumn, selendlineno;
     escape;
     if (##column_ontheway) {
-        golineend;
+        golineend2;
     }
     insertreturn;
     insertreturn;

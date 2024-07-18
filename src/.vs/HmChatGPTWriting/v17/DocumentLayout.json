@@ -80,9 +80,10 @@
               "RelativeDocumentMoniker": "HmChatGPTWriting\\HmOutputWriter.cs",
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmOutputWriter.cs",
               "RelativeToolTip": "HmChatGPTWriting\\HmOutputWriter.cs",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAAAGMAAAApAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAABFwGMAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T02:53:18.774Z"
+              "WhenOpened": "2024-06-09T02:53:18.774Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -93,7 +94,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\WinForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "HmChatGPTWriting\\WinForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T10:38:18.72Z"
+              "WhenOpened": "2024-05-31T10:38:18.72Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
             },
             {
               "$type": "Document",
@@ -105,7 +107,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\MessageListAutoRemover.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAApwBYAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T09:51:07.844Z"
+              "WhenOpened": "2024-05-31T09:51:07.844Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -117,7 +120,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmNetCOM.tt",
               "ViewState": "AQIAAHAKAAAAAAAAAAAgwI8KAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2023-09-20T13:59:39.638Z"
+              "WhenOpened": "2023-09-20T13:59:39.638Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -128,7 +132,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-14T16:28:33.068Z"
+              "WhenOpened": "2023-06-14T16:28:33.068Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -140,7 +145,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvw4AAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-11T19:22:01.35Z"
+              "WhenOpened": "2023-06-11T19:22:01.35Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -165,7 +171,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\WinForm.cs",
               "ViewState": "AQIAAFMAAAAAAAAAAAAUwGwAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-01T12:12:59.055Z"
+              "WhenOpened": "2023-06-01T12:12:59.055Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -177,7 +184,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\WinFormCOMInterface.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAIwBEAAABwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-14T16:23:22.628Z"
+              "WhenOpened": "2023-06-14T16:23:22.628Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -189,7 +197,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmNetCOM.cs",
               "ViewState": "AQIAAGEKAAAAAAAAAAAYwIMKAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-14T16:23:17.448Z"
+              "WhenOpened": "2023-06-14T16:23:17.448Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -201,7 +210,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\obj\\Release\\net6.0-windows\\HmChatGPTWriting.AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-06-11T19:21:41.406Z"
+              "WhenOpened": "2023-06-11T19:21:41.406Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -212,7 +222,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\Resource.resx",
               "RelativeToolTip": "HmChatGPTWriting\\Resource.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2023-06-01T12:09:24.067Z"
+              "WhenOpened": "2023-06-01T12:09:24.067Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -223,7 +234,8 @@
               "ToolTip": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-01T12:09:15.25Z"
+              "WhenOpened": "2023-06-01T12:09:15.25Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -235,7 +247,8 @@
               "RelativeToolTip": "HmChatGPTWriting\\HmChatGPTWriting.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAADwv1UAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2023-06-01T12:09:15.304Z"
+              "WhenOpened": "2023-06-01T12:09:15.304Z",
+              "EditorCaption": ""
             }
           ]
         }

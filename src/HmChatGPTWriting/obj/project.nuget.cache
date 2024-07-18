@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "D++fyxnT+Ps=",
+  "dgSpecHash": "Pn3rFceNh+M=",
   "success": true,
   "projectFilePath": "G:\\repogitory\\hm_openai_chatgpt_writing\\src\\HmChatGPTWriting\\HmChatGPTWriting.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\master\\.nuget\\packages\\betalgo.openai\\8.2.2\\betalgo.openai.8.2.2.nupkg.sha512",
+    "C:\\Users\\master\\.nuget\\packages\\betalgo.openai\\8.6.0\\betalgo.openai.8.6.0.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\hmnetcom\\2.0.7.9\\hmnetcom.2.0.7.9.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\master\\.nuget\\packages\\microsoft.extensions.configuration.binder\\6.0.0\\microsoft.extensions.configuration.binder.6.0.0.nupkg.sha512",
